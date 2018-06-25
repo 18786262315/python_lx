@@ -1,0 +1,98 @@
+﻿二、元素定位
+
+新增
+ 
+1.格式：find_element_by_定位方式(value)
+ 
+通过id定位
+（取resource-id的值）：
+driver.find_element_by_id("com.wuba.zhuanzhuan:id/azo")
+也可以直接用id后面的内容driver.find_element_by_id("azo")
+ 
+通过class_name定位
+（取class的内容）
+driver.find_element_by_class_name("android.widget.RelativeLayout")
+ 
+通过xpath定位
+（取xpath得内容）
+driver.find_element_by_xpath("//android.widget.LinearLayout[1]/android.widget.XXX")
+ 
+通过text定位
+（需要使用uiautomator的定位方式，使用text的内容）
+driver.find_elements_by_android_uiautomator("new UiSelector().text(\"+关注\")")
+ 
+使用这里需要注意一下，通过text定位的结果是个list，不能直接click。所以如果要点击需要取数组的值，比如下面是点击找到的第一个元素
+driver.find_elements_by_android_uiautomator("new UiSelector().text(\"+关注\")")[0].click()
+ 
+通过css_selector定位（webview）
+只适用于webview的html页面，继承自webdriver，与pc版本的UI测试一致
+driver.find_element_by_css_selector()
+ 
+通过link_text定位（webview）
+只适用于webview容器中的html页面，继承自webdriver，与pc版本的UI测试一致
+driver.find_element_by_link_text()
+ 
+通过name定位
+web view容器中的html页面可以用name定位，native并没有name属性
+driver.find_element_by_name()
+  
+2.定位元素的另一种写法：find_element(by,value)
+find_element_by_方式(value)实际调用的都是find_element(by,value)
+需要导入这个包：from selenium.webdriver.common.by import By
+ 
+例如：定位id为ag2的元素
+方式一：driver.find_element_by_id("ag2”)
+方式二：driver.find_element(By.ID,"ag2")
+ 
+这个操作的好处是可以直接把操作的by和value放到一个元组里，然后调用通用方法来传参获得元素结果
+cateid=(By.ID,"ag2")
+driver.find_element(*cateid).click()
+ 
+by的操作可以是：
+By.ID   相当于by_id
+By.CLASS_NAME  相当于by_class_name
+By.XPATH   相当于by_xpath
+By.NAME   相当于by_name
+By.TAG_NAME   相当于by_tag_name
+By.CSS_SELECTOR  相当于by_css_selector
+By.LINK_TEXT  相当于by_link_text
+ 
+ 
+3.find_elements_by_定位方式(value)返回元素数组
+用法与find_element_by_方式(value)一致，但是返回一个数组。可以通过数组的索引来访问具体的某个结果
+ 
+例如：通过class_name定位到多个元素，我想点击第一个元素
+driver.find_elements_by_class_name("android.widget.RelativeLayout”)[0].click()
+ 
+4.返回元素数组的另一种写法：find_elements(by,value)
+用法与find_element(by,value)一致，但是返回一个数组。可以通过数组的索引来访问具体的某个结果
+ 
+例如：通过class_name定位到多个元素，我想点击第一个元素
+driver.find_elements(By.CLASS_NAME,"android.widget.RelativeLayout”)[0].click()
+ 
+5.通过元素定位元素
+可以先找到某个元素，然后再进一步定位元素
+find_element_by_class_xpath(“xxx”).find_element_by_name(“yyy")
+ 
+ 
+ 
+三、元素操作
+ 
+找到元素后可以对元素进行的操作，例如上面讲的进一步定位元素
+ 
+1.click()
+//点击操作
+也可以用tab实现点击操作
+driver.find_element_by_id("com.wuba.zhuanzhuan:id/ae8").click()
+ 
+2.clear()
+//清空输入框内容
+driver.find_element_by_id("com.wuba.zhuanzhuan:id/ij").clear()
+ 
+3.send(xx)
+//输入框内输入内容
+driver.find_element_by_id("com.wuba.zhuanzhuan:id/ij").send_keys("test content")
+ 
+4.text
+//获得元素的text内容
+print(driver.find_element_by_xpath(" //android.widget.LinearLayout[1]//xxx").text)cdasgdfscdasgdfs

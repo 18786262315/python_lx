@@ -1,0 +1,8 @@
+diff a/yccSS/cc.py b/yccSS/cc.py	(rejected hunks)
+@@ -1 +0,3 @@
+-print('thes is cc in for home !!')
+\ No newline at end of file
++print('thes is cc in for home !!')
++s = 1+1
++s = 2+1
+\ No newline at end of file

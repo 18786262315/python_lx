@@ -21,7 +21,7 @@ class AndroidTest(unittest.TestCase):
         print(self.driver.contexts)# 获取上下文列表
         cons = self.driver.contexts  
         self.driver._switch_to.context('WEBVIEW_com.bluestacks.home')
-        self.driver.page_source
+    self.driver.page_source
         self.driver.current_context
         print(self.driver.page_source)
 

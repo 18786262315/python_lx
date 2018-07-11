@@ -12,7 +12,7 @@ import traceback
 from email.utils import parseaddr, formataddr
 from email import encoders
 from email.header import Header
-import urllib3
+import urllib
 
 HOST = 'smtp.gmail.com'
 PORT = 587
@@ -61,7 +61,7 @@ def executesql(sql):
 def main():
 	for url in urls:
 		# r = requests.get(url)
-		s = urllib3.request.urlopen(url)
+		s = urllib.request.urlopen(url)
 		if s.code == 200:
 			soup = BeautifulSoup(s.read(),"lxml")
 			ulcontent = soup.find('ul',opentype="page")	

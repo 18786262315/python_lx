@@ -8,7 +8,7 @@
             "name": "Python",
             "type": "python",
             "request": "launch",
-            "stopOnEntry": true,
+            "stopOnEntry": false,
             "pythonPath": "E:\\python\\Python36-32\\python.exe",
             "program": "${file}",
             "cwd": "${workspaceFolder}",

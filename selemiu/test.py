@@ -10,35 +10,35 @@
 
 #方法2:
 
-List=[1,2,2,2,2,3,3,3,4,4,4,4,5,5]
+# List=[1,2,2,2,2,3,3,3,4,4,4,4,5,5]
 
-s = {}
+# s = {}
 
-for i in List:
-    if List.count(i) >=1:
-        s[i] = List.count(i)
-
-
-print (s) 
+# for i in List:
+#     if List.count(i) >=1:
+#         s[i] = List.count(i)
 
 
+# print (s) 
 
 
-a = {}
-
-for i in List:
-
-  if List.count(i)>1:
-
-    a[i] = List.count(i)
-
-print (a)
 
 
-s = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+# a = {}
+
+# for i in List:
+
+#   if List.count(i)>1:
+
+#     a[i] = List.count(i)
+
+# print (a)
 
 
-print (s.count)
+# s = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+
+
+# print (s.count)
 
 
 
@@ -117,4 +117,8 @@ driver.close()
 
 
 
+import os
 
+print(__file__)
+print(os.path.abspath(__file__))
+print (os.path.dirname(os.path.dirname(__file__)))

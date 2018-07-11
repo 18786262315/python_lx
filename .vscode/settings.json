@@ -1,3 +1,9 @@
-{
-    "python.linting.pylintEnabled": false
+{   //设置代码规范提示
+    
+
+    "python.linting.pylintEnabled": false,
+
+
+   
+    
 }

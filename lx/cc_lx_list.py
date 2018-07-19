@@ -12,7 +12,10 @@ for i in list3:
     print (i)
     a = int(input('输入你要购买的商品编号：'))
     if a in list3.index(0):
-        print(1)
+        print(a)
 #        print ()
+    elif a == '':
+        print('你没有输入商品''')
+        a
 
 

@@ -17,7 +17,7 @@ class TestMathFunc(unittest.TestCase):
     def test_add(self):
         """Test method add(a, b)"""
         print ("add")
-        self.assertEqual(3, add(1, 2))
+        self.assertEqual(3, add(1, 2)) 
         self.assertNotEqual(3, add(2, 2))
     
     def test_minus(self):

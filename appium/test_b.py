@@ -4,7 +4,6 @@ import unittest
 import test_a
 import test_w
 
-
 class AndroidTest(unittest.TestCase):
 
     @classmethod
@@ -19,10 +18,10 @@ class AndroidTest(unittest.TestCase):
     def test_tab(self):
         '''tab'''
         print(self.driver.contexts)# 获取上下文列表
-        cons = self.driver.contexts  
-        self.driver._switch_to.context('WEBVIEW_com.bluestacks.home')
-    self.driver.page_source
-        self.driver.current_context
+        cons = self.driver.contexts  #保存上下文
+        self.driver.switch_to.context('WebView in com.tencent.tim')
+        # self.driver.page_source
+        print(self.driver.current_context)
         print(self.driver.page_source)
 
         # sleep(2)
@@ -70,25 +69,25 @@ class AndroidTest(unittest.TestCase):
     # def test_bark5(self):
     #     sleep(3)
 
-    def click(self, name, key):
-        if name == 'id':
-            self.driver.find_element_by_id(key).click()
-        if name == 'class':
-            self.driver.find_element_by_class_name(key).click()
-        if name == 'xpath':
-            self.driver.find_element_by_xpath(key).click()
-    def getSize(self):
-        x = self.driver.get_window_size()['width']
-        y = self.driver.get_window_size()['height']
-        return (x, y)
+    # def click(self, name, key):
+    #     if name == 'id':
+    #         self.driver.find_element_by_id(key).click()
+    #     if name == 'class':
+    #         self.driver.find_element_by_class_name(key).click()
+    #     if name == 'xpath':
+    #         self.driver.find_element_by_xpath(key).click()
+    # def getSize(self):
+    #     x = self.driver.get_window_size()['width']
+    #     y = self.driver.get_window_size()['height']
+    #     return (x, y)
 
-    def swipLeft(self):
-        t=1000
-        l = self.getSize()
-        x1 = int(l[0]*0.75)
-        y1 = int(l[1]*0.5)
-        x2 = int(l[0]*0.05)
-        self.driver.swipe(x1, y1, x2, y1, int(t))
+    # def swipLeft(self):
+    #     t=1000
+    #     l = self.getSize()
+    #     x1 = int(l[0]*0.75)
+    #     y1 = int(l[1]*0.5)
+    #     x2 = int(l[0]*0.05)
+    #     self.driver.swipe(x1, y1, x2, y1, int(t))
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

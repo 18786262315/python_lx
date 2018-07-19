@@ -6,10 +6,11 @@ from appium import webdriver
 def a_config():
   desired_caps = {
       "platformName": "Android",
-      "platformVersion": "5.1.1",
-      "deviceName": "127.0.0.1:21503",
+      "platformVersion": "7.1.1",
+      "deviceName": "c76dc6fa",
       "appPackage": "com.mixgo.MixGo",
-      "appActivity": "com.mixgo.ui.MixGoStartActivity"
+      "appActivity": "com.mixgo.ui.MixGoStartActivity",
+      "recreateChromeDriverSessions":True,
       # 'unicodeKeyboard':True,
       # 'resetKeyboard':True
       }

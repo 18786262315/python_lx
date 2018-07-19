@@ -10,14 +10,14 @@ print (list_01.union(list_02))
 print (list_01 | list_02)
 # 差集
 print (list_01.difference(list_02))
-print (list_01 - list_02)
+print (list_02 - list_01  )
 #子集
 print (list_01.issubset(list_02))
 #父集
 print (list_01.issuperset(list_02))
 #对称差集，反向差集
 print (list_01.symmetric_difference(list_02))
-print (list_01 ^ list_02)
+print (list_02 ^ list_01  )
 
 print (list_01.symmetric_difference_update(list_02))
 

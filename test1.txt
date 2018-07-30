@@ -1,5 +1,0 @@
-F:\BaiduNetdiskDownload\源码>cd E:\ycc\pythonlianxi && cmd /C "set "PYTHONIOENCODING=UTF-8" && set "PYTHONUNBUFFERED=1" && E:\python\Python36-32\python.exe c:\Users\Administrator\.vscode\extensions\ms-python.python-2018.6.0\pythonFiles\PythonTools\visualstudio_py_launcher.py E:\ycc\pythonlianxi 54839 34806ad9-833a-4524-8cd6-18ca4aa74f14 RedirectOutput,RedirectOutput e:\ycc\pythonlianxi\lx\shutil_object.py "
-Traceback (most recent call last):
-  File "e:\ycc\pythonlianxi\lx\shutil_object.py", line 7, in <module>
-    f1 = open('test1.txt','r')
-FileNotFoundError: [Errno 2] No such file or directory: 'test1.txt'

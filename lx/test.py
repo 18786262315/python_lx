@@ -8,6 +8,7 @@
 
 #GIF图片查看器：
 import tkinter as tk,os
+
 class Application(tk.Frame):
     def __init__(self,master=None):
         self.files=os.listdir(r'C:\\Users\\Administrator\\Desktop\\ss')

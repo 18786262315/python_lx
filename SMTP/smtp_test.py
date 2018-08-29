@@ -18,10 +18,10 @@ contents = [
     文本内容1
     文本内容1
     ''']
- 
+
 # 发送邮件
  
-yag.send('843092012@qq.com','subject', contents)
+# yag.send('843092012@qq.com','subject', contents)
  
 # 四行代码完工，简单吧
  
@@ -31,5 +31,5 @@ yag.send('843092012@qq.com','subject', contents)
  
 # # 发送邮件带附件
  
-# yag.send('ccc@126.com','发送附件', contents, ["d://1.txt","d://1.jpg"])
+yag.send('843092012@qq.com','发送附件', contents, ["C:\\Users\\Administrator\\Desktop\\bq包\\211347811066.jpg"])
 

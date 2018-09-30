@@ -3,6 +3,8 @@
 
     "python.linting.pylintEnabled": false,
     "python.jediEnabled": false,
+    "python.pythonPath": "E:\\python\\Python36-32\\python.exe",
+    "python.formatting.provider": "autopep8",
 
 
    

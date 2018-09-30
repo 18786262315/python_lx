@@ -1,13 +1,16 @@
 #usr/bin/python3
 
-import time 
 
-import datetime
-# 51test
-
-print(datetime.datetime.now()+datetime.timedelta(hours=-3))
+print('\033[1;33;44mThis is a test !\033[0m')
 
 
+# import time 
+
+# import datetime
+# # 51test
+
+# print(datetime.datetime.now()+datetime.timedelta(hours=-3))
+# print(time.strftime("%y-%m-%d %H:%M:%S", time.gmtime()))
 
 # print(time.time()) 
 # # time.sleep(2)

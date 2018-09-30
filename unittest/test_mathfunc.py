@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-from mathfunc import *
+# from mathfunc import *
 from unittest import case
 
 class TestMathFunc(unittest.TestCase):

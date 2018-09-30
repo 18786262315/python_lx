@@ -1,0 +1,36 @@
+》》》https《《《
+》》》错误时间:18-09-10 22:02:56《《《
+错误信息：('Connection aborted.', TimeoutError(10060, '由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。', None, 10060, None))
+
+》》》http《《《
+》》》错误时间:18-09-10 22:22:18《《《
+错误信息：HTTPConnectionPool(host='www.mixgo.com', port=80): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x032C2870>: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+》》》https《《《
+》》》错误时间:18-09-11 18:24:04《《《
+错误信息：HTTPSConnectionPool(host='www.mixgo.com', port=443): Max retries exceeded with url: / (Caused by ProxyError('Cannot connect to proxy.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None)))
+
+》》》https《《《
+》》》错误时间:18-09-11 18:46:15《《《
+错误信息：HTTPSConnectionPool(host='www.mixgo.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:777)'),))
+
+》》》http《《《
+》》》错误时间:18-09-11 20:58:11《《《
+错误信息：('Connection broken: IncompleteRead(0 bytes read)', IncompleteRead(0 bytes read))
+
+》》》http《《《
+》》》错误时间:18-09-11 21:16:07《《《
+错误信息：('Connection broken: IncompleteRead(0 bytes read)', IncompleteRead(0 bytes read))
+
+》》》http《《《
+》》》错误时间:18-09-11 21:17:08《《《
+错误信息：HTTPConnectionPool(host='127.0.0.1', port=62177): Max retries exceeded with url: http://www.mixgo.com/ (Caused by ProxyError('Cannot connect to proxy.', RemoteDisconnected('Remote end closed connection without response',)))
+
+》》》https《《《
+》》》错误时间:18-09-11 21:18:19《《《
+错误信息：HTTPSConnectionPool(host='www.mixgo.com', port=443): Max retries exceeded with url: / (Caused by ProxyError('Cannot connect to proxy.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None)))
+
+》》》https《《《
+》》》错误时间:18-09-12 00:24:01《《《
+错误信息：HTTPSConnectionPool(host='www.mixgo.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:777)'),))
+

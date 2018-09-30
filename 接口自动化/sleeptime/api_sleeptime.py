@@ -1,28 +1,32 @@
 
 
-import sched ,time,requests,os
+import sched
+import time
+import requests
+import os
 
 schedule = sched.scheduler(time.time, time.sleep)
 
 n_http = 'http://www.mixgo.com/'
 n_https = 'https://www.mixgo.com/'
 
+
 def p_http():
     '''执行http请求测试'''
     times = time.strftime("%y-%m-%d %H:%M:%S", time.localtime())
     try:
         fanhuizhi = requests.get(n_http).status_code
-        print('http当前时间：%s>>>'%times,fanhuizhi)
+        print('http当前时间：%s>>>' % times, fanhuizhi)
 
     except Exception as e:
-        print ('\31[1;35m 发现时间》》》'+times+'《《《\31[0m')
+        print('\31[1;35m 发现时间》》》'+times+'《《《\31[0m')
         print(e)
-        with open('E:\\ycc\\pythonlianxi\\11.txt','a',encoding='utf-8') as f:
-            f.write('》》》http《《《\n》》》错误时间:%s《《《\n错误信息：%s\n\n'%(times,e))
+        with open('E:\\ycc\\pythonlianxi\\11.txt', 'a', encoding='utf-8') as f:
+            f.write('》》》http《《《\n》》》错误时间:%s《《《\n错误信息：%s\n\n' % (times, e))
 
 
 def p_https():
-        '''执行https请求测试'''
+    '''执行https请求测试'''
     times = time.strftime("%y-%m-%d %H:%M:%S", time.localtime())
     try:
         fanhuizhi = requests.get(n_https).status_code
@@ -37,7 +41,7 @@ def p_https():
 
 def perform_command(cmd, inc):
     # 安排inc秒后再次运行自己，即周期运行
-    #防止报错后停止运行
+    # 防止报错后停止运行
     schedule.enter(inc, 0, perform_command, (cmd, inc))
 
     p_http()

@@ -1,37 +1,33 @@
 #usr/bin/python3
 
 
-print('\033[1;33;44mThis is a test !\033[0m')
+# print('\033[1;33;44mThis is a test !\033[0m')
 
 
-# import time 
+import time 
 
-# import datetime
-# # 51test
+import datetime
+# 51test
 
-# print(datetime.datetime.now()+datetime.timedelta(hours=-3))
-# print(time.strftime("%y-%m-%d %H:%M:%S", time.gmtime()))
+print(datetime.datetime.now()+datetime.timedelta(hours=-3))
+print(time.strftime("%y-%m-%d %H:%M:%S", time.localtime()))
 
-# print(time.time()) 
-# # time.sleep(2)
-# # print(time.clock()) 
-# # time.gmtime() # 转换当前时间，将当前时间转换为元组，以标准时区转换
-# print(time.gmtime(9000)) #将时间戳转换为元组形式 ,转换后的时间是，utc时间
-# print(time.localtime())#将当前时间转换成元组 ,本地时区。 
-# x = time.localtime()
-# # bin(x)
-# print(time.mktime(x)) #将元组形式的时间转换为时间戳
-# time.strftime("%Y-%m-%d %H:%M:%S",x) #将元组格式的时间转换为格式化时间字符串表示。
-# s = time.strptime("2018-06-04 12:30:24","%Y-%m-%d %H:%M:%S")# %Y %m %d %H %M %S 时间表示格式
-# print(s)
-# print()
-# print()
-# print()
-# print()
-
-
-
-
+print(time.localtime) 
+# time.sleep(2)
+# print(time.clock()) 
+# time.gmtime() # 转换当前时间，将当前时间转换为元组，以标准时区转换
+print(time.gmtime(9000)) #将时间戳转换为元组形式 ,转换后的时间是，utc时间
+print(time.localtime())#将当前时间转换成元组 ,本地时区。 
+x = time.localtime()
+# bin(x)
+print(time.mktime(x)) #将元组形式的时间转换为时间戳
+time.strftime("%Y-%m-%d %H:%M:%S",x) #将元组格式的时间转换为格式化时间字符串表示。
+s = time.strptime("2018-06-04 12:30:24","%Y-%m-%d %H:%M:%S")# %Y %m %d %H %M %S 时间表示格式
+print(s)
+print()
+print()
+print()
+print()
 
 
 # import os

@@ -12,7 +12,7 @@ Skip()  # 无条件跳过测试。
 skipIf(condition, reason)  # 条件为真时跳过测试
 skipUnless(condition, reason)  # 条件为假时跳过测试
 expectedFailure(test_item)  # 标记该测试预期就是失败，如果运行失败时，不算作失败用例。
-_is_subtype(expected, basetype)  # 判断类型是否符合预期,暂时不知道干什么用的
+_is_subtype(expected, basetype)  # 判断类型是否符合预期
 addTypeEqualityFunc(typeobj, function) # 为自定义检查类提供检查方法
 addCleanup( function , *args , **kwargs ) #添加针对每个测试用例执行完tearDown()方法之后的清理方法，添加进去的函数按照后进先出（LIFO）的顺序执行，当然，如果setUp()方法执行失败，那么不会执行tearDown()方法，自然也不会执行addCleanup()里添加的函数。
 setUp()#在执行每个测试用例之前被执行，任何异常（除了unittest.SkipTest和AssertionError异常以外）都会当做是error而不是failure，且会终止当前测试用例的执行。
@@ -27,6 +27,8 @@ run( result =None)#运行一个测试用例，将测试结果收集到result变�
 doCleanups()#无条件强制调用addCleanup()添加的函数，适用于setUp()方法执行失败但是需要执行清理函数的场景，或者希望在tearDown()方法之前执行这些清理函数。
 debug()#与run方法将测试结果存储到result变量中不同，debug方法运行测试用例将异常信息上报给调用者。
 fail( msg =None)#无条件声明一个测试用例失败，msg是失败信息。
+
+assertEqual(set1,set2,msg=None) #检测两个值是否相等
 assertFalse( expr, msg=None) #检查表达式是否为假
 assertTrue( expr, msg=None) #检查表达式是否为真
 assertAlmostEqual与assertNotAlmostEqual(, first, second, places=None, msg=None,delta=None) #判断两个值是否约等于或者不约等于，places表示小数点后精确的位数

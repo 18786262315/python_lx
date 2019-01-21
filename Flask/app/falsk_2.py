@@ -1,24 +1,29 @@
-#coding = utf8
+
 import flask,json
+#!usr/bin/python
+# -*- coding : UTF-8 -*-
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 import os
 from flask_cors import *
 from app import app
-from flask import request,make_response,Response ,render_template
+from flask import request,make_response,Response ,render_template, url_for
 from app import db
 from .model import users
-
 
 CORS(app, resources=r'/*')
 @app.route('/falsk_1',methods=["get"])
 def falsk_1():
-
+    print(request.args)
     res = {
     'ucode':0,
     'mags':{
 
-    'list1':{'name':'cc','yar':'5220','values':'666','imgs':"F:\\BaiduNetdiskDownload\\风景系\\385.jpg"},
-    'list2':{'name':'cc','yar':'5220','values':'777','imgs':"F:\BaiduNetdiskDownload\风景系\383.jpg"},
-    'list3':{'name':'cc','yar':'5220','values':'888','imgs':"F:\BaiduNetdiskDownload\风景系\422.jpg"}
+    'list1':{'name':'cc','yar':'5220','values':'666','imgs':r"F:\BaiduNetdiskDownload\385.jpg"},
+    'list2':{'name':'cc','yar':'5220','values':'777','imgs':r"F:\BaiduNetdiskDownload\383.jpg"},
+    'list3':{'name':'cc','yar':'5220','values':'888','imgs':r"F:\BaiduNetdiskDownload\422.jpg"}
     }}
     return json.dumps(res,ensure_ascii=False)
 
@@ -39,8 +44,8 @@ def tester():
     # db.session.commit()
     usersa = users.query.all()
 
-    print(usersa[1:])
-    return json.dumps({'data':'ccc'},ensure_ascii=False)
+    # print(usersa[1:])
+    return json.dumps({'data':username,'pass':password},ensure_ascii=False)
 
     #     # 使用cursor()方法获取操作游标
     #     cursor = db.cursor()
@@ -78,9 +83,9 @@ def code():
 
 
 @app.route('/register',methods=['post','get'])
-
 def register():
-
+    # print(request.headers)
+    # print(request.json)
     data = request.get_data()
     json_data = json.loads(data.decode("utf-8"))
     print(json_data['username'])
@@ -89,6 +94,35 @@ def register():
     return json.dumps(res,ensure_ascii=False)
 
 
+
+@app.route('/test/<name>',methods=['get'])
+def test(name):
+    # print(request.headers)
+    # print(request.json)
+    print(name)
+    
+    return json.dumps(name,ensure_ascii=False)
+
+@app.route('/<int:age>/')  #设置url传参数 http://127.0.0.1:5000/18/
+def first_flask(age):  #视图必须有对应接收参数
+    print(age)
+    return json.dumps('res',ensure_ascii=False)
+
+@app.route('/a/<path:url>/')  #设置url传参数 http://127.0.0.1:5000/18/
+def first(url):  #视图必须有对应接收参数
+    print(url)
+    return "hello word!!"
+
+@app.route('/<path:url>',endpoint='name1')
+def first_1(url):
+    print(url_for('name1',url="/flask_1")) #如果设置了url参数，url_for（别名,加参数）
+    return 'Hello World'
+
+def first_flask():
+    return 'Hello World' 
+
+app.add_url_rule(rule='/index/',endpoint='name2',view_func=first_flask,methods=['GET'])
+#app.add_url_rule(rule=访问的url,endpoint=路由别名,view_func=视图名称,methods=[允许访问的方法])
 
 
 # app.run(port=7777,debug=True,host='0.0.0.0')

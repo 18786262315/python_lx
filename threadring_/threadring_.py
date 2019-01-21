@@ -25,7 +25,7 @@ def login(ll):
     # logger.info("Finish")
     os.system('adb logcat -v time process > %s'%ll)
     print('*——————————————————————————————————————————————*')
-
+    
 
 def sayhi(name_):
     f = open(name_)

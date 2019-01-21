@@ -1,34 +1,34 @@
 
-#text文本定位
-driver.find_element_by_link_text("新闻").click()
+# #text文本定位
+# driver.find_element_by_link_text("新闻").click()
 
 
-#iframe 子页面切换，操作
-driver.switch_to.frame(reference)# 进入
-driver.switch_to.parent_frame()#返回上一层
-driver.switch_to.default_content()#返回最顶层
+# #iframe 子页面切换，操作
+# driver.switch_to.frame(reference)# 进入
+# driver.switch_to.parent_frame()#返回上一层
+# driver.switch_to.default_content()#返回最顶层
 
 
 #下拉框处理：
-from selenium.webdriver.support.select import Select
-#点击MixGo艺术品：
-Select(driver.find_element_by_id('filter-brand')).select_by_visible_text('MixGo艺术品')
+# from selenium.webdriver.support.select import Select
+# #点击MixGo艺术品：
+# Select(driver.find_element_by_id('filter-brand')).select_by_visible_text('MixGo艺术品')
 
 
-# 我的教程：http://www.cnblogs.com/TTyb/p/6046082.html
-from selenium import webdriver
-# 打开谷歌浏览器
-browser = webdriver.Chrome()
+# # 我的教程：http://www.cnblogs.com/TTyb/p/6046082.html
+# from selenium import webdriver
+# # 打开谷歌浏览器
+# browser = webdriver.Chrome()
  
-# 打开窗口
-browser.get("https://www.baidu.com/")
-# 打开新窗口
-newwindow = 'window.open("https://www.baidu.com");'
-browser.execute_script(newwindow)
+# # 打开窗口
+# browser.get("https://www.baidu.com/")
+# # 打开新窗口
+# newwindow = 'window.open("https://www.baidu.com");'
+# browser.execute_script(newwindow)
  
-# 切换到新的窗口
-handles = browser.window_handles
-browser.switch_to_window(handles[-1])
+# # 切换到新的窗口
+# handles = browser.window_handles
+# browser.switch_to_window(handles[-1])
 
 
 
@@ -112,7 +112,7 @@ driver = webdriver.Chrome()
 #coding:utf-8
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains #引入ActionChains鼠标操作类
-from selenium.webdriver.common.keys import Keys #引入keys类操作
+from selenium.webdriver..keys import Keys #引入keys类操作
 import time
 
 def s(int):
@@ -127,7 +127,7 @@ browser.maximize_window()
 browser.find_element_by_id('kw').send_keys(u'杨彦星')
 print (browser.find_element_by_id('kw').get_attribute('type'))
 print (browser.find_element_by_id('kw').size) #打印输入框的大小
-browser.find_element_by_id('su1').click()
+browser.find_element_by_id('su').click()
 time.sleep(3)
 
 print ('现在我将设置浏览器为宽480，高800显示')
@@ -145,8 +145,10 @@ browser.forward()
 time.sleep(5)
 print ('现在我将打开杨彦星的网站进行json搜索')
 browser.get('http://www.yangyanxing.com')
-browser.find_element_by_xpath(".//*[@id='ls']").send_keys(u'json')
-browser.find_element_by_xpath(".//*[@id='header']/div[1]/div/form/input[2]").click()
+browser.find_element_by_xpath("//*[@id='sidebar']/div[1]/form/input[1]").send_keys(u'json')
+browser.find_element_by_xpath("//*[@id='sidebar']/div[1]/form/input[1]").send_keys(Keys.ENTER)
+
+# browser.find_element_by_xpath(".//*[@id='header']/div[1]/div/form/input[2]").click()
 time.sleep(5)
 browser.quit()
 

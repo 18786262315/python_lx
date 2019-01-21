@@ -1,5 +1,7 @@
 
-
+'''
+自动请求http与https接口，并判断请求状况。
+'''
 import sched
 import time
 import requests

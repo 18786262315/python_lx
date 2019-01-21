@@ -6,7 +6,7 @@ import yagmail
  
 #此处的password是授权码
  
-yag= yagmail.SMTP( user="843092012@qq.com", password="xumeagqowzcgbfji", host='smtp.qq.com')
+yag= yagmail.SMTP( user="ycc843092012@gmail.com", password="xumeagqowzcgbfji", host='smtp.qq.com')
  
 # 邮箱正文
  

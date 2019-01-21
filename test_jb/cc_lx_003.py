@@ -21,7 +21,10 @@ browser.find_element_by_id('kw').send_keys(u'杨彦星')
 print (browser.find_element_by_id('kw').get_attribute('type'))
 print (browser.find_element_by_id('kw').size) #打印输入框的大小
 browser.find_element_by_id('su').click()
-time.sleep(3)
+browser.find_element_by_partial_link_text('知道').click()
+js = "window.scrollTo(0,1000);"
+browser.execute_script(js)
+time.sleep(5)
 
 print ('现在我将设置浏览器为宽480，高800显示')
 browser.set_window_size(480,800)
@@ -40,7 +43,9 @@ print ('现在我将打开杨彦星的网站进行json搜索')
 browser.get('http://www.yangyanxing.com')
 browser.find_element_by_id("search-input").send_keys(u'json')
 #browser.find_element_by_xpath(".//*[@id='header']/div[1]/div/form/input[2]").click()
+
 time.sleep(5)
+
 browser.quit()
 
 browser = webdriver.Chrome()

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三级菜单练习</title>
+</head>
+<!-- <link rel="stylesheet" href="menu.css" type="text/css" /> -->
+<style>
+*{
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+    list-style:none;
+    color: black;
+}
+a{
+    /*background-color: #aaa;*/
+    padding: 10px 20px;
+    font-size: 20px;
+    line-height: 44.3px;
+    font-weight: bold;
+    font-family: arial;
+    /*border: 1px solid black;*/
+}
+#nav>li>ul>li>a{
+    font-size: 18px;
+}
+#nav>li>ul>li>ul>li>a{
+    font-size: 16px;
+}
+#nav>li{
+    float: left;
+}
+#nav>li:hover>ul{
+    display: block;
+    position: absolute;
+}
+#nav>li>ul>li{
+    position: relative;
+}
+#nav>li>ul>li:hover>ul{
+    display: block;
+    position: absolute;
+    left: 120px;
+    top: 0px;
+    min-width: 150px;
+}
+#nav>li>ul>li:hover>ul>li{
+}
+#nav a:hover{
+    background-color: #f40;
+    color: #fff;
+}
+#nav>li>ul{
+    display: none;
+}
+
+#nav>li>ul>li>ul{
+    display: none;
+}
+div{
+    /*display: block;*/
+    margin-left: 400px;
+}
+
+div::after{
+    content: '';
+    display: block;
+    clear: both;
+}</style>
+<body>
+    <div>
+        <ul id="nav">
+            <li>
+                <a href="">一级菜单</a>
+                <ul>
+                    <li>
+                    <a href="">二级菜单</a>
+                    <ul>
+                        <li><a href="">三级菜单</a></li>
+                        <li><a href="">三级菜单</a></li>
+                        <li><a href="">三级菜单</a></li>
+                        <li><a href="">三级菜单</a></li>
+                        <li><a href="">三级菜单</a></li>
+                        <li><a href="">三级菜单</a></li>
+                        <li><a href="">三级菜单</a></li>
+                        <li><a href="">三级菜单</a></li>
+                        <li><a href="">三级菜单</a></li>
+                    </ul>
+                    </li>
+                    <li>
+                    <a href="">二级菜单</a>
+                    <ul>
+                        <li><a href="">三级菜单</a></li>
+                        <li><a href="">三级菜单</a></li>
+                        <li><a href="">三级菜单</a></li>
+                        <li><a href="">三级菜单</a></li>
+                        <li><a href="">三级菜单</a></li>
+                        <li><a href="">三级菜单</a></li>
+                    </ul>
+                    </li>
+                    <li>
+                    <a href="">二级菜单</a>
+                    <ul>
+                        <li><a href="">三级菜单</a></li>
+                        <li><a href="">三级菜单</a></li>
+                        <li><a href="">三级菜单</a></li>
+                    </ul>
+                    </li>
+                    <li>
+                    <a href="">二级菜单</a>
+                    <ul>
+                        <li><a href="">三级菜单</a></li>
+                        <li><a href="">三级菜单</a></li>
+                        <li><a href="">三级菜单</a></li>
+                    </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="">一级菜单</a>
+                <ul>
+                    <li>
+                        <a href="">二级菜单</a>
+                        <ul>
+                            <li><a href="">三级菜单</a></li>
+                            <li><a href="">三级菜单</a></li>
+                            <li><a href="">三级菜单</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">二级菜单</a>
+                        <ul>
+                            <li><a href="">三级菜单</a></li>
+                            <li><a href="">三级菜单</a></li>
+                            <li><a href="">三级菜单</a></li>
+                        </ul>
+                        </li>
+                    <li>
+                        <a href="">二级菜单</a>
+                        <ul>
+                            <li><a href="">三级菜单</a></li>
+                            <li><a href="">三级菜单</a></li>
+                            <li><a href="">三级菜单</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">二级菜单</a>
+                        <ul>
+                            <li><a href="">三级菜单</a></li>
+                            <li><a href="">三级菜单</a></li>
+                            <li><a href="">三级菜单</a></li>
+                        </ul>    
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="">一级菜单</a>
+                <ul>
+                    <li>
+                        <a href="">二级菜单</a>
+                        <ul>
+                            <li><a href="">三级菜单</a></li>
+                            <li><a href="">三级菜单</a></li>
+                            <li><a href="">三级菜单</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">二级菜单</a>
+                        <ul>
+                            <li><a href="">三级菜单</a></li>
+                            <li><a href="">三级菜单</a></li>
+                            <li><a href="">三级菜单</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">二级菜单</a>
+                        <ul>
+                            <li><a href="">三级菜单</a></li>
+                            <li><a href="">三级菜单</a></li>
+                            <li><a href="">三级菜单</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">二级菜单</a>
+                        <ul>
+                            <li><a href="">三级菜单</a></li>
+                            <li><a href="">三级菜单</a></li>
+                            <li><a href="">三级菜单</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="">一级菜单1</a>
+                <ul>
+                    <li>
+                        <a href="">二级菜单</a>
+                        <ul>
+                            <li><a href="">三级菜单</a></li>
+                            <li><a href="">三级菜单</a></li>
+                            <li><a href="">三级菜单</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">二级菜单</a>
+                        <ul>
+                            <li><a href="">三级菜单</a></li>
+                            <li><a href="">三级菜单</a></li>
+                            <li><a href="">三级菜单</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">二级菜单2</a>
+                        <ul>
+                            <li><a href="">三级菜单1</a>|<a href="">三级菜单2</a></li>
+                            <li><a href="">三级菜单</a></li>
+                            <li><a href="">三级菜单</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="">二级菜单</a>
+                        <ul>
+                            <li><a href="http://www.baidu.com" target="_blank">三级菜单3</a></li>
+                            <li><a href="">三级菜单</a></li>
+                            <li><a href="">三级菜单</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <hr>
+    <p>...</p>
+</body>
+</html>

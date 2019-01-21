@@ -1,3 +1,6 @@
+#!usr/bin/python
+# -*- coding : utf-8 -*-
+
 from app import app
 import json
 from flask import render_template
@@ -31,7 +34,7 @@ def index():
 def teste():
     nm ='cc'
     pd = '123456'
-    #正常参数 请求
+    #正常参数请求
     # username = request.values.get('username')
     # print(username)
     # json格式参数 请求

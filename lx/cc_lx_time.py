@@ -32,13 +32,13 @@ print()
 
 # import os
 
-# print(time.time())
-# print(time.localtime())
-# print(time.localtime())
+print(time.time())
+print(time.localtime())
+print(time.localtime())
 
-# #最简单的获取可读的时间模式的函数是asctime():
-# localtime = time.asctime(time.localtime(time.time()))
-# print ("本地时间为 :", localtime)
+#最简单的获取可读的时间模式的函数是asctime():
+localtime = time.asctime(time.localtime(time.time()))
+print ("本地时间为 :", localtime)
 
 #python中时间日期格式化符号：
 '''

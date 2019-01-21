@@ -2,7 +2,6 @@
 
 class name(object):
 
-
     def __init__(self,name='not'):
         self.name = name
         self.__age = None

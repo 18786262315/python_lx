@@ -1,7 +1,7 @@
 
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column,Boolean,Date,Time,INT,Text,DateTime,DECIMAL,Float,Enum,Integer,String,ForeignKey,UniqueConstraint,Index,create_engine
-from sqlalchemy.orm import sessionmaker,relationship
+from sqlalchemy import text,or_,and_,Column,Boolean,Date,Time,INT,Text,DateTime,DECIMAL,Float,Enum,Integer,String,ForeignKey,UniqueConstraint,Index,create_engine
+from sqlalchemy.orm import sessionmaker,relationship,aliased
 from sqlalchemy.dialects.mysql import LONGTEXT
 import panduan_ku
 
@@ -19,7 +19,7 @@ INT_GO = "%s+%s://%s:%s@%s"%(host,phost,name,passw,url)
 ku = panduan_ku.Ku_Name
 ku.panduan_ku(INT_GO,database_name)
 
-engine = create_engine("{INT_GO}/{database_name}?charset={charset}".format(INT_GO=INT_GO,database_name=database_name,charset=charset),max_overflow=5,echo=True)
+engine = create_engine("{INT_GO}/{database_name}?charset={charset}".format(INT_GO=INT_GO,database_name=database_name,charset=charset),max_overflow=5,) #echo=True 是否打印回显
 
 Base = declarative_base(engine)
 

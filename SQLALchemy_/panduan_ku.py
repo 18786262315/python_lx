@@ -9,4 +9,5 @@ class Ku_Name():
             conn.execute("create database %s"%ku_name)
             conn.close()
         except Exception as e:
+            
             return e

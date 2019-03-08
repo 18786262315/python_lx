@@ -4,7 +4,7 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, ForeignKey, UniqueConstraint, Index, create_engine
 from sqlalchemy.orm import sessionmaker, relationship
-
+from sqlalchemy.util import aliased
 # mysql+pymysql 链接方式://root:ycc962464 账户密码@127.0.0.1:3306链接地址及端口/tests链接的数据库名称?charset=utf8mb4 字符集
 engine = create_engine(
     "mysql+pymysql://root:ycc962464@127.0.0.1:3306/tests?charset=utf8mb4", max_overflow=5,echo=True)
@@ -92,20 +92,6 @@ def init_db():
     Base.metadata.create_all()
 
 # 顶固删除数据库函数
-class Person(Base):
-    __tablename__ = "person"
-    id = Column(Integer , primary_key=True , autoincrement=True)
-    age = Column(Integer)
-    name = Column(String(20))
-    price1 = Column(Float)
-    price2 = Column(DECIMAL(7,3))
-    delete = Column(Boolean)
-    sex = Column(Enum("男","女"))
-    create_time1 = Column(Date)
-    create_time2 = Column(DateTime)
-    create_time3 = Column(Time)
-    content = Column(Text)
-    contents = Column(LONGTEXT)
 
 def drop_db():
     Base.metadata.drop_all()
@@ -161,7 +147,7 @@ def search(name):
 
 # ret是一个对象列表。这个对象可以通过 “对象[索引].字段”来获取对应的值
 
-# ret = session.query(User).all() #查询列表所有数据
+ret = session.query(User).all() #查询列表所有数据
 # print(ret[0].name) #结果为元组，可通过下标的形式
 # for i in ret: #循环元组，
 #     print(i.name)

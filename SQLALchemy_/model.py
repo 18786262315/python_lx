@@ -2,40 +2,50 @@
 # -*- coding: utf-8 -*-
 # auth : pangguoping
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, ForeignKey, UniqueConstraint, Index
+from sqlalchemy import Column, Integer, String, ForeignKey, UniqueConstraint, Index, create_engine
 from sqlalchemy.orm import sessionmaker, relationship
-from sqlalchemy import create_engine
-# mysql+pymysql 链接方式://root:ycc962464 账户密码@127.0.0.1:3306链接地址及端口/tests链接的数据库名称?charset=utf8mb4 字符集
-engine = create_engine("mysql+pymysql://root:ycc962464@127.0.0.1:3306/tests?charset=utf8mb4", max_overflow=5) 
 
-Base = declarative_base()
+# mysql+pymysql 链接方式://root:ycc962464 账户密码@127.0.0.1:3306链接地址及端口/tests链接的数据库名称?charset=utf8mb4 字符集
+engine = create_engine(
+    "mysql+pymysql://root:ycc962464@127.0.0.1:3306/tests?charset=utf8mb4", max_overflow=5,echo=True)
+
+Base = declarative_base(engine)
 
 # 创建单表
+
+
 class User(Base):
     __tablename__ = 'user'
-    id = Column(Integer, primary_key=True ) #主键 autoincrement=True 自增
+    id = Column(Integer, primary_key=True)  # 主键 autoincrement=True 自增
     name = Column(String(32))
     extra = Column(String(16))
     num = Column(Integer)
+    tests = Column(String(20))
     __table_args__ = (
-    UniqueConstraint('id', 'name', name='uix_id_name'),
-        Index('ix_id_name', 'name', 'extra'), #索引
-#Index('my_index', my_table.c.data, mysql_length=10) length 索引长度
-#Index('a_b_idx', my_table.c.a, my_table.c.b, mysql_length={'a': 4,'b': 9})
-# Index('my_index', my_table.c.data, mysql_prefix='FULLTEXT') 指定索引前缀
-# Index('my_index', my_table.c.data, mysql_using='hash') 指定索引类型
+        UniqueConstraint('id', 'name', name='uix_id_name'),
+        Index('ix_id_name', 'name', 'extra','tests'),  # 索引
+        # Index('my_index', my_table.c.data, mysql_length=10) length 索引长度
+        #Index('a_b_idx', my_table.c.a, my_table.c.b, mysql_length={'a': 4,'b': 9})
+        # Index('my_index', my_table.c.data, mysql_prefix='FULLTEXT') 指定索引前缀
+        # Index('my_index', my_table.c.data, mysql_using='hash') 指定索引类型
     )
+
+
 class Home(Base):
     __tablename__ = 'home'
-    id = Column(Integer,primary_key = True)
+    id = Column(Integer, primary_key=True)
     tab = Column(String(20))
     values = Column(String(60))
+    value_name = Column(String(40))
+
 
 # 一对多
+
+
 class Favor(Base):
     __tablename__ = 'favor'
     nid = Column(Integer, primary_key=True)
-    caption = Column(String(50), default='red', unique=True) # unique 唯一
+    caption = Column(String(50), default='red', unique=True)  # unique 唯一
 
 
 class Person(Base):
@@ -45,11 +55,14 @@ class Person(Base):
     favor_id = Column(Integer, ForeignKey("favor.nid"))
 
 # 多对多
+
+
 class ServerToGroup(Base):
     __tablename__ = 'servertogroup'
-    nid = Column(Integer, primary_key=True, autoincrement=True) 
-    server_id = Column(Integer, ForeignKey('server.id')) #外键
+    nid = Column(Integer, primary_key=True, autoincrement=True)
+    server_id = Column(Integer, ForeignKey('server.id'))  # 外键
     group_id = Column(Integer, ForeignKey('group.id'))
+
 
 class Group(Base):
     __tablename__ = 'group'
@@ -64,26 +77,53 @@ class Server(Base):
     hostname = Column(String(64), unique=True, nullable=False)
     port = Column(Integer, default=22)
 
-#定义初始化数据库函数
-def init_db():
-    Base.metadata.create_all(engine) 
 
-#顶固删除数据库函数
+class Booking(Base):
+    __tablename__ = 'booking'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    hostname = Column(String(64), unique=True, nullable=False)
+    port = Column(Integer, default=22)
+
+# 定义初始化数据库函数
+
+
+def init_db():
+    Base.metadata.create_all()
+
+# 顶固删除数据库函数
+class Person(Base):
+    __tablename__ = "person"
+    id = Column(Integer , primary_key=True , autoincrement=True)
+    age = Column(Integer)
+    name = Column(String(20))
+    price1 = Column(Float)
+    price2 = Column(DECIMAL(7,3))
+    delete = Column(Boolean)
+    sex = Column(Enum("男","女"))
+    create_time1 = Column(Date)
+    create_time2 = Column(DateTime)
+    create_time3 = Column(Time)
+    content = Column(Text)
+    contents = Column(LONGTEXT)
+
 def drop_db():
-    Base.metadata.drop_all(engine)
+    Base.metadata.drop_all()
 
 # drop_db()
-# init_db() 
+init_db()
 
-Session = sessionmaker(bind=engine) #创建session
+
+Session = sessionmaker(bind=engine)  # 创建session
 session = Session()
 
-# def search(name): 
-#     user = User.query.filter(User.name == name).first()
-#     if user is None or user.name.strip == '':
-#         print('用户不存在')
-#     else:
-#         print(' 用户 %s' % user.name)
+
+def search(name):
+    user = User.query.filter(User.name == name).first()
+    if user is None or user.name.strip == '':
+        print('用户不存在')
+    else:
+        print(' 用户 %s' % user.name)
 
 
 # 增
@@ -96,11 +136,11 @@ session = Session()
 # ])
 # session.commit()  # 添加到sql
 
-#删
+# 删
 # session.query(User).filter(User.id > 2).delete()
 # session.commit()
 
-#改
+# 改
 # # 更新user表中id大于2的name列为099
 # session.query(User).filter(User.id > 2).update({"name" : "099"})
 # # 更新user表中id大于2的name列，在原字符串后边增加099
@@ -110,7 +150,7 @@ session = Session()
 # session.commit()
 
 
-#查
+# 查
 
 # ret = session.query(User).all() # 查询所有
 # sql = session.query(User) # 查询生成的sql
@@ -124,18 +164,18 @@ session = Session()
 # ret = session.query(User).all() #查询列表所有数据
 # print(ret[0].name) #结果为元组，可通过下标的形式
 # for i in ret: #循环元组，
-#     print(i.name) 
+#     print(i.name)
 
 
-#其他操作
+# 其他操作
 
 #　条件
-# ret = session.query(User).filter_by(name='alex').all() #查询所有name = alex 内容 
+# ret = session.query(User).filter_by(name='alex').all() #查询所有name = alex 内容
 # ret = session.query(User).filter(User.id > 1, User.name == 'eric').all() # 且的关系
 
 # ret = session.query(User).filter(User.id.between(1, 3), User.name == 'eric').all()
 # print(ret[0].name)
-# ret = session.query(User).filter(User.id.in_([1,3,4])).all() 
+# ret = session.query(User).filter(User.id.in_([1,3,4])).all()
 # print(ret)
 # ret = session.query(User).filter(~User.id.in_([1,3,4])).all() # ~表示非。就是not in的意思
 # print(ret)
@@ -161,7 +201,7 @@ session = Session()
 # print(list(ret))
 
 # ret = session.query(User).filter(~User.name.like('e%')).all() # 表示not like
- 
+
 # # 限制 limit用法
 # ret = session.query(User)[0:3] # 等于limit ，具体功能需要自己测试 从几行到几行！
 # ret = session.query(Favor).join(Person,Person.favor_id == Favor.nid).all()
@@ -171,7 +211,7 @@ session = Session()
 # ret = session.query(User).order_by(User.name.desc(), User.id.asc()).all() # 按照name从大到小排列，如果name相同，按照id从小到大排列
 
 # # 分组
-from sqlalchemy.sql import func
+# from sqlalchemy.sql import func
 
 # ret = session.query(User).group_by(User.extra).all()
 # ret = session.query(
@@ -179,15 +219,16 @@ from sqlalchemy.sql import func
 #     func.sum(User.id),
 #     func.min(User.id)).group_by(User.name).all()
 
-ret = session.query(
-    func.max(User.id),
-    func.sum(User.id),
-    func.min(User.id)).group_by(User.name).having(func.min(User.id) >2).all() # having对聚合的内容再次进行过滤
-print(ret)
+# ret = session.query(
+#     func.max(User.id),
+#     func.sum(User.id),
+#     func.min(User.id)).group_by(User.name).having(func.min(User.id) >2).all() # having对聚合的内容再次进行过滤
+# print(ret)
+
 # 连表
- 
+
 # ret = session.query(User, Favor).filter(User.id == Favor.nid).all()
- 
+
 # ret = session.query(Person).join(Favor).all()
 # # 默认是inner join
 # ret = session.query(Person).join(Favor, isouter=True).all() # isouter表示是left join
@@ -203,5 +244,3 @@ print(ret)
 # q2 = session.query(Favor.caption).filter(Favor.nid < 2)
 # ret = q1.union_all(q2).all() # union_all不去重
 # print(ret)
-
-

@@ -5,7 +5,8 @@ import numpy
 
 
 
-print(numpy.msort([1,3,2,5,4,6,3]))
+print(numpy.msort([1,3,2,5,4,6,3])) #排序
+
 
 
 
@@ -22,4 +23,4 @@ pd = "E:\\新联国际\\地产项目\\测试资料\\pingmiantu\\"
 
 # cp(pd,"D12-01.jpg",100)
 
-shutil.make_archive(pd,'zip',pd)
+# shutil.make_archive(pd,'zip',pd)

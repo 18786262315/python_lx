@@ -12,7 +12,7 @@ session = Session()
 #增加数据：
 
 # obj = User(
-    #单条
+#     # 单条
 #     username='cc3',
 #     userpassword='123456',
 #     phone=18786262315,
@@ -50,20 +50,20 @@ session = Session()
 
 
 #删除数据
-# session.query(User).filter(User.id == 5).delete()
+session.query(User).filter(User.id == 6).delete()
+
 
 # 修改数据
 # session.query(User).filter(User.id == 6).update({'username':'tset_cc'})
 
-# session.query(User).filter(User.id == 7).update({User.username:'tset_ccc',User.phone:'13012345678'})
+session.query(User).filter(User.id == 5).update({User.username:'tset_ccc',User.phone:'13012345678'})
 
-# session.commit()
 
 
 
 
 # 查询
-# ret=session.query(User) #直接打印整个列表数据，以对象的形式返回
+ret=session.query(User).all() #直接打印整个列表数据，以对象的形式返回
 # ret=session.query(User).all() #直接打印整个列表数据，以列表的形式返回
 # ret=session.query(User.id,User.phone,User.username) # 打印指定列数据以元组的方式返回
 
@@ -100,11 +100,10 @@ session = Session()
 # ret = session.query(User).filter(or_(User.username.like('cc%'),User.phone == 18786262315)).all() # or 条件
 
 # ret = session.query(User).from_statement(text("select * from User where username like 'cc%'")).all() # 直接执行sql 语句
-ret = session.query(User).from_statement(text("select * from User where id =:name and username =:names")).params(name = 3,names='cc7').one() # 直接执行sql 语句
+# ret = session.query(User).from_statement(text("select * from User where id =:name and username =:names")).params(name = 3,names='cc7').one() # 直接执行sql 语句
 
 
 # ret = session.query(User).all() #all() 以列表的形式返回查询结果
-# ret = session.query(User).one() #all() 以列表的形式返回查询结果
 # session.query(User).filter(..).one()/one_or_none()/scalar() #one()/one_or_none()/scalar()返回单独的一个数据对象
 
 
@@ -114,8 +113,10 @@ ret = session.query(User).from_statement(text("select * from User where id =:nam
 # ret = session.query(User).filter_by(userpassword='123456').all()
 # ret=session.query(User.id,User.phone,User.username.label('names')).all()
 
-print(type(ret))
-# for i in ret:
-#     print(i.id,i.username)
 
-print(ret.id)
+
+print(type(ret))
+for i in ret:
+    print(i.id,i.username)
+
+# print(ret.id)

@@ -91,7 +91,7 @@ class Booking(Base):
 def init_db():
     Base.metadata.create_all()
 
-# 顶固删除数据库函数
+# 定义删除数据库函数
 
 def drop_db():
     Base.metadata.drop_all()
@@ -105,8 +105,8 @@ session = Session()
 
 
 def search(name):
-    user = User.query.filter(User.name == name).first()
-    if user is None or user.name.strip == '':
+    user = Session.query.filter(User.name == name).first()
+    if user is None or User.name.strip == '':
         print('用户不存在')
     else:
         print(' 用户 %s' % user.name)

@@ -19,7 +19,7 @@ INT_GO = "%s+%s://%s:%s@%s"%(host,phost,name,passw,url)
 ku = panduan_ku.Ku_Name
 ku.panduan_ku(INT_GO,database_name)
 
-engine = create_engine("{INT_GO}/{database_name}?charset={charset}".format(INT_GO=INT_GO,database_name=database_name,charset=charset),max_overflow=5,) #echo=True 是否打印回显
+engine = create_engine("{INT_GO}/{database_name}?charset={charset}".format(INT_GO=INT_GO,database_name=database_name,charset=charset),max_overflow=5,echo=True) #echo=True 是否打印回显
 
 Base = declarative_base(engine)
 
@@ -28,7 +28,7 @@ class User(Base):
     id = Column(Integer,primary_key=True)
     username = Column(String(20))
     userpassword = Column(String(40))
-    phone = Column(String(13))
+    phone = Column(String(20))
     poto = Column(String(20)) #用户头像
     createtime = Column(DateTime)
     sex = Column(Enum('1','2','3','4'))

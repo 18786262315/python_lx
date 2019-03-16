@@ -5,11 +5,21 @@ from urllib.parse import quote
 # 起点数据
 urls = "http://api.singmap.com/broke-manager-service/siteplan/updateSiteContent"
 
-yuanshishujiu = [{"width":"72","height":"25","left":"411","top":"89","name":"Rect0","fill":"rgba(220,20,60,0.4)","type":"rect","buildingID":"dc1cb41f25da45d795e38fee3113e8e5","sitePlanID":"ff140c8bb89d4f5dbb22031f485be1fb","unitID":"c0725a8df14b47e48abf0124b8250241","sitePlanName":"Block 2"},{"width":"72","height":"25","left":"1502","top":"85","name":"Rect1","fill":"rgba(220,20,60,0.4)","type":"rect"},{"width":"72","height":"25","left":"408","top":"736","name":"Rect2","fill":"rgba(220,20,60,0.4)","type":"rect"},{"width":"72","height":"25","left":"1504","top":"734","name":"Rect3","fill":"rgba(220,20,60,0.4)","type":"rect"},{"width":"72","height":"24","left":"403","top":"1375","name":"Rect4","fill":"rgba(220,20,60,0.4)","type":"rect"},{"width":"72","height":"24","left":"1057","top":"1377","name":"Rect5","fill":"rgba(220,20,60,0.4)","type":"rect"},{"width":"72","height":"24","left":"1699","top":"1379","name":"Rect6","fill":"rgba(220,20,60,0.4)","type":"rect"}]
+yuanshishujiu = [{"width":"24","height":"11","left":"48","top":"283","name":"Rect0","fill":"rgba(220,20,60,0.4)","type":"rect"},{"width":"24","height":"11","left":"474","top":"471","name":"Rect3","fill":"rgba(220,20,60,0.4)","type":"rect"},{"width":"24","height":"11","left":"474","top":"111","name":"Rect4","fill":"rgba(220,20,60,0.4)","type":"rect"},{"width":"49","height":"23","left":"52","top":"235","name":"Rect492","fill":"rgba(220,20,60,0.4)","type":"rect"},{"width":"48","height":"23","left":"474","top":"65","name":"Rect493","fill":"rgba(220,20,60,0.4)","type":"rect"},{"width":"48","height":"23","left":"474","top":"425","name":"Rect494","fill":"rgba(220,20,60,0.4)","type":"rect"},{"width":"47","height":"11","left":"53","top":"259","name":"Rect495","fill":"rgba(220,20,60,0.4)","type":"rect"},{"width":"48","height":"11","left":"475","top":"88","name":"Rect496","fill":"rgba(220,20,60,0.4)","type":"rect"},{"width":"48","height":"11","left":"475","top":"448","name":"Rect497","fill":"rgba(220,20,60,0.4)","type":"rect"}]
 jieguo = [] #执行完成的结果存放
-hang = [23,23,23,23,22,23,21] #行
-lie = [9,8,9,8,6,6,9] #列
+hang = [13,14,14,1,1,1,2,2,2] #行数 top
+lie = [12,12,12,6,6,6,6,6,6] #列数 left
 unit_name = 0 #名称
+def panduan (name):
+    #矫正行距
+    if name in [3,9,15,21,25]:
+        # if name[%2]:
+        #     return 0
+        # else:
+        #     return 1
+        return 1
+    else:
+        return 1
 
 for name in yuanshishujiu:
     #循环原始列表
@@ -20,6 +30,7 @@ for name in yuanshishujiu:
     left = int(copy.deepcopy(name.get('left')))
     # 获取当前执行的块需要循环多少行列。
     dy_hang = hang.pop(0)
+    print(dy_hang)
     dy_lie = lie.pop(0)
     for i in range(dy_hang):
         #一级循环
@@ -35,17 +46,17 @@ for name in yuanshishujiu:
             jieguo.append(copy.deepcopy(name))
             print(name.items())
             # 循环一次增加一次列的距离，距离==块的宽度
-            lefts+=width+(3 if a%3  else 2)
-        top = '%s'%(int(name.get('top'))+height+(3 if i%3  else 2))
-
+            lefts+=width+(0 if a%3  else 0)
+        top = '%s'%(int(name.get('top'))+height+panduan(i))
+# +(1 if a%5  else 0)
 
 # 推送到服务器
-jieguo = re.sub("'",'"','%s'%jieguo)
+jieguo = re.sub("'",'"','%s'%jieguo) #将单引号换成双引号
 content = quote('%s'%jieguo,'utf-8') #转码
 payload = {"userId": "6",
-           "token": "54a408e0ffc048fb9f8591e038b4ae27",
+           "token": "b88cf4564e6d47d79dd147398a93d5c3",
            "brokeId": "0c5d80359cc5416a9ea953fdebcbfc20",
-           "sitePlanId": "e1d6caf9ec7542f5aa20248cb3e913d5",
+           "sitePlanId": "fe036c3690364c2090a5ce180479616b",
            "content": jieguo
 }
 headers = {"Content-Type": "application/x-www-form-urlencoded"}
@@ -54,8 +65,8 @@ print(ret)
 
 
 # 写入文件
-jieguo_w = open(R'C:\Users\Administrator\Desktop\names01\jieguo.txt','r+',encoding='utf-8')
-jieguo_w.write('%s'%jieguo)
+# jieguo_w = open(R'C:\Users\Administrator\Desktop\names01\jieguo.txt','r+',encoding='utf-8')
+# jieguo_w.write('%s'%jieguo)
 
 
 

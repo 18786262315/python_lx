@@ -1,9 +1,1 @@
-
-k,l,j = [1,2,3]
-
-
-inputs = input ('lalla:')
-# print(inputs)
-
-s = "yahoo!" if int(inputs) > 2 else "yahoo2"
-print(s)
+[{"width":"50","height":"16","left":"76","top":"83","name":"Rect0","fill":"rgba(220,20,60,0.4)","type":"rect"},\n{"width":"50","height":"16","left":"459","top":"83","name":"Rect1","fill":"rgba(220,20,60,0.4)","type":"rect"},\n{"width":"50","height":"16","left":"847","top":"82","name":"Rect2","fill":"rgba(220,20,60,0.4)","type":"rect"},\n{"width":"50","height":"16","left":"73","top":"431","name":"Rect3","fill":"rgba(220,20,60,0.4)","type":"rect"},\n{"width":"50","height":"16","left":"459","top":"431","name":"Rect4","fill":"rgba(220,20,60,0.4)","type":"rect"},\n{"width":"50","height":"16","left":"845","top":"430","name":"Rect5","fill":"rgba(220,20,60,0.4)","type":"rect"},\n{"width":"50","height":"16","left":"73","top":"759","name":"Rect6","fill":"rgba(220,20,60,0.4)","type":"rect"},\n{"width":"50","height":"16","left":"462","top":"758","name":"Rect7","fill":"rgba(220,20,60,0.4)","type":"rect"},\n{"width":"50","height":"16","left":"846","top":"757","name":"Rect8","fill":"rgba(220,20,60,0.4)","type":"rect"},\n{"width":"49","height":"16","left":"1238","top":"82","name":"Rect748","fill":"rgba(220,20,60,0.4)","type":"rect"},\n{"width":"49","height":"16","left":"1235","top":"430","name":"Rect749","fill":"rgba(220,20,60,0.4)","type":"rect"},\n{"width":"49","height":"16","left":"1237","top":"760","name":"Rect750","fill":"rgba(220,20,60,0.4)","type":"rect"}]

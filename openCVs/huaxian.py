@@ -2,20 +2,32 @@ import numpy as np
 import cv2
 
 # Create a black image
-img=np.zeros((512,512,3), np.uint8)
+img=np.zeros((1000,1000,3), np.uint8)
 
-wt = [(367, 181), (459, 181), (367, 257), (459, 257)]
 
+wt = [(367, 181), (459, 181), (367, 257), (459, 257),(400, 210), (500, 210), (400, 300), (500, 300)]
+xiabiao = []
+new_wt = []
+cc = wt
 for i in wt :
     for a in wt:
-        print(i,a)
-       
+        if i[0] == a[0] and i[1] != a[1]:
+            new_wt.append([i,a])
+            cv2.line(img,i,a,(255,0,0),3)
+            xiabiao.append(i[0]+i[1]+a[0]+a[1])
+            print(i,a)
+            print(i[0]+i[1]+a[0]+a[1])
+        elif  i[1] == a[1]  and i[0] != a[0]:
+            new_wt.append([i,a])
+            xiabiao.append(i[0]+i[1]+a[0]+a[1])
+            cv2.line(img,i,a,(255,0,0),3)
+            print(i,a)
+            print(i[0]+i[1]+a[0]+a[1])
 
-
-
+print(new_wt)
 
 # Draw a diagonal blue line with thickness of 5 px
-cv2.line(img,(0,0),(511,511),(255,0,0),5)
+
 
 # #draw rectangle
 # cv2.rectangle(img,(384,0),(510,128),(0,255,0),3)

@@ -4,7 +4,7 @@ from PIL import Image
 import operator 
 
 
-imgs =R'C:\Users\Administrator\Desktop\z01.jpg'
+imgs =R'C:\Users\Administrator\Desktop\da.jpg'
 
 image = cv2.imread(imgs, 1)
 print(image[100,100])
@@ -53,18 +53,30 @@ for a,i in enumerate(bitwiseAnd):
             jieguo.append((m,a))
             # print('----->',a,m)
 
+
+print(jieguo)
+xiabiao = []
+new_wt = []
+cc = jieguo
 for i in jieguo :
     for a in jieguo:
-        if i[0] == a[0] or i[1] == a[1] :
-            if operator.eq(a, i) :
-                # print(operator.eq(a, i))
-                pass
-            elif i[0] != a[1] or i[1] != a[0]:
-                cv2.line(image,i,a,(255,0,0),1)
-                # print(i,a)
+        if i[0] == a[0] and i[1] != a[1]:
+            new_wt.append([i,a])
+            # cv2.line(image,i,a,(255,0,0),5)
+            # xiabiao.append(i[0]+i[1]+a[0]+a[1])
+            print(i,a,'---->',i[1]-a[1])
+        elif  i[1] == a[1]  and i[0] != a[0] :
+            new_wt.append([i,a])
+            print(i,a,'---->',i[0]-a[0])
+            # xiabiao.append(i[0]+i[1]+a[0]+a[1])
+            # cv2.line(image,i,a,(255,0,0),3)
+            # print(i,a)
+            pass
+#  and i[0]+i[1]+a[0]+a[1] not in xiabiao
+print((new_wt))
 
 
-# print(jieguo)
+print(jieguo)
 print(bitwiseAnd.size)
 
 cv2.imshow('opencv',image)

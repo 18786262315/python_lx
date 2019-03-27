@@ -63,7 +63,7 @@ session.query(User).filter(User.id == 5).update({User.username:'tset_ccc',User.p
 
 
 # 查询
-ret=session.query(User).all() #直接打印整个列表数据，以对象的形式返回
+ret=session.query(User,Person).filter(User.id == Person.id).filter(Person.id == 1).all() #直接打印整个列表数据，以对象的形式返回
 # ret=session.query(User).all() #直接打印整个列表数据，以列表的形式返回
 # ret=session.query(User.id,User.phone,User.username) # 打印指定列数据以元组的方式返回
 
@@ -117,6 +117,9 @@ ret=session.query(User).all() #直接打印整个列表数据，以对象的形�
 
 print(type(ret))
 for i in ret:
-    print(i.id,i.username)
+    for a in i:
+        print(type(a))
+        for s in a:
+            print(s)
 
 # print(ret.id)

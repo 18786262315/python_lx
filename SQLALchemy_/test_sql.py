@@ -11,7 +11,7 @@ phost = 'pymysql'
 name = 'root'
 passw = 'ycc962464'
 url = '127.0.0.1:3306'
-database_name = 'new_sql'
+database_name = 'testt'
 charset = 'utf8mb4'
 INT_GO = "%s+%s://%s:%s@%s"%(host,phost,name,passw,url)
 

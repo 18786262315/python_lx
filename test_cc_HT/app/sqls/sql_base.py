@@ -48,7 +48,26 @@ class User_Company(Base):
     id = Column(Integer,primary_key=True , autoincrement=True)
     User_ID = Column(String(20),comment='用户ID')
     Company_ID = Column(String(20),comment='公司ID')
-    User_Identity = Column(Enum(0,1,2,3,4,5,6),comment='用户在当前公司的身份：0、普通用户，1、管理员，2、BOSS，3、临时用户')
+    Company_Power_ID = Column(Integer,comment='公司权限ID')
+    # User_Identity = Column(Enum(0,1,2,3,4,5,6),comment='用户在当前公司的身份：0、普通用户，1、管理员，2、BOSS，3、临时用户')
+
+
+class Company_Power(Base):
+    log.info('----->>检测用户所在公司内的权限表')
+    __tablename__='company_power'
+    id = Column(Integer,primary_key=True , autoincrement=True)
+    Company_Power_ID = Column(Integer,comment='权限ID')
+    Power_ID = Column(CHAR,comment='权限名称')
+    Power_Status = Column(Enum(0,1,2),comment='权限状态：0、有权限，1、没有权限，2、半权限')
+
+
+class Power(Base):
+    log.info('----->检测权限表')
+    __tablename__='power'
+    id = Column(Integer,primary_key=True , autoincrement=True)
+    Power_ID = Column(String(20),comment='权限ID')
+    Power_Name = Column(CHAR,comment='权限名称')
+    Power_Status = Column(Enum(0,1,2),comment='权限位置：0、公司权限，1、项目组权限，2、待定。。')
 
 
 class Item_list(Base):
@@ -65,9 +84,21 @@ class Item_list(Base):
     User_ID =Column(CHAR,comment='创建人ID')
     
 
+class User_Item(Base):
+    log.info('---->> 检测用户关联的项目表')
+    __tablename__ = 'user_item'
+    id = Column(Integer,primary_key=True , autoincrement=True)
+    User_ID = Column(String(20),comment='用户ID')
+    Item_ID = Column(String(20),comment='项目ID')
+    Item_Power_ID = Column(Integer,comment='权限ID')
 
-
-
+class Item_Power(Base):
+    log.info('---->> 检测账户在项目内的权限表')
+    __tablename__ = 'item_power'
+    id = Column(Integer,primary_key=True , autoincrement=True)
+    Item_Power_ID = Column(Integer,comment='权限ID')
+    Power_ID = Column(CHAR,comment='权限名称')
+    Power_Status = Column(Enum(0,1,2),comment='权限状态：0、有权限，1、没有权限，2、半权限')
 
 
 

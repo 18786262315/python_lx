@@ -1,4 +1,4 @@
-from Sql_access import sql_base
+from Sql_access import *
 
 
 

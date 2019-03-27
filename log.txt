@@ -1,2 +1,13 @@
 
-qqqq 
+qqqq 2019-03-26 16:08:36,783 - __main__ - INFO - Start print log
+2019-03-26 16:08:36,801 - __main__ - WARNING - Something maybe fail.
+2019-03-26 16:08:36,802 - __main__ - INFO - Finish
+2019-03-26 16:10:57,955 - __main__ - INFO - Start print log
+2019-03-26 16:10:57,956 - __main__ - WARNING - Something maybe fail.
+2019-03-26 16:10:57,956 - __main__ - INFO - Finish
+2019-03-26 16:14:18,308 - __main__ - INFO - Start print log
+2019-03-26 16:14:18,309 - __main__ - WARNING - Something maybe fail.
+2019-03-26 16:14:18,310 - __main__ - INFO - Finish
+2019-03-26 16:27:54,999 - __main__ - INFO - Start print log
+2019-03-26 16:27:55,003 - __main__ - WARNING - Something maybe fail.
+2019-03-26 16:27:55,005 - __main__ - INFO - Finish

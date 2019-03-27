@@ -59,25 +59,25 @@
 
 
 
-# #同时输出到文件以及屏幕
-# import logging
-# logger = logging.getLogger(__name__)
-# logger.setLevel(level = logging.INFO)
-# handler = logging.FileHandler("log.txt")
-# handler.setLevel(logging.INFO)
-# formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-# handler.setFormatter(formatter)
+#同时输出到文件以及屏幕
+import logging
+logger = logging.getLogger(__name__)
+logger.setLevel(level = logging.INFO)
+handler = logging.FileHandler("log.txt")
+handler.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
 
-# console = logging.StreamHandler()
-# console.setLevel(logging.INFO)
+console = logging.StreamHandler()
+console.setLevel(logging.INFO)
 
-# logger.addHandler(handler)
-# logger.addHandler(console)
+logger.addHandler(handler)
+logger.addHandler(console)
 
-# logger.info("Start print log")
-# logger.debug("Do something")
-# logger.warning("Something maybe fail.")
-# logger.info("Finish")
+logger.info("Start print log")
+logger.debug("Do something")
+logger.warning("Something maybe fail.")
+logger.info("Finish")
 
 '''
 可以发现，logging有一个日志处理的主对象，其他处理方式都是通过addHandler添加进去，logging中包含的handler主要有如下几种，

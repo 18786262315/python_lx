@@ -1,0 +1,33 @@
+2019-03-27 09:31:54,111-当前模块---》test-INFO:——————————》》》23232321!!
+2019-03-27 09:31:54,112-当前模块---》test-DEBUG:-------->>>123213!!!!002
+2019-03-27 09:31:54,112-当前模块---》test-ERROR:#####错误！！
+2019-03-27 10:57:05,903-Sql_access-INFO:----->库已存在
+2019-03-27 15:06:05,981-Sql_access-INFO:----->库已存在
+2019-03-27 15:06:05,983-Sql_access-INFO:----->>创建user表
+2019-03-27 15:06:05,992-Sql_access-INFO:----->>创建Person表
+2019-03-27 15:17:32,320-Sql_access-INFO:----->库已存在
+2019-03-27 15:17:32,322-Sql_access-INFO:----->>创建user表
+2019-03-27 15:17:32,330-Sql_access-INFO:----->>创建Person表
+2019-03-27 15:22:03,219-Sql_access-INFO:----->库已存在
+2019-03-27 15:22:03,257-Sql_access-INFO:----->>创建user表
+2019-03-27 15:22:03,265-Sql_access-INFO:----->>创建Person表
+2019-03-27 15:22:52,234-Sql_access-INFO:----->库已存在
+2019-03-27 15:22:52,236-Sql_access-INFO:----->>创建user表
+2019-03-27 15:22:52,245-Sql_access-INFO:----->>创建Person表
+2019-03-27 15:23:20,250-Sql_access-INFO:----->库已存在
+2019-03-27 15:23:20,252-Sql_access-INFO:----->>创建user表
+2019-03-27 15:23:20,262-Sql_access-INFO:----->>创建Person表
+2019-03-27 15:30:31,719-Sql_access-INFO:----->>创建user表
+2019-03-27 15:30:31,730-Sql_access-INFO:----->>创建Person表
+2019-03-27 15:31:37,884-Sql_access-INFO:----->库已存在:(pymysql.err.ProgrammingError) (1007, "Can't create database 'new_sql'; database exists") [SQL: 'create database new_sql'] (Background on this error at: http://sqlalche.me/e/f405)
+2019-03-27 15:31:37,886-Sql_access-INFO:----->>创建user表
+2019-03-27 15:31:37,899-Sql_access-INFO:----->>创建Person表
+2019-03-27 16:37:39,761-Sql_access-INFO:----->库已存在:(pymysql.err.ProgrammingError) (1007, "Can't create database 'new_sql'; database exists") [SQL: 'create database new_sql'] (Background on this error at: http://sqlalche.me/e/f405)
+2019-03-27 16:37:39,763-Sql_access-INFO:----->>创建user表
+2019-03-27 16:37:39,773-Sql_access-INFO:----->>创建Person表
+2019-03-27 16:37:39,780-Sql_access-INFO:---->> 创建Item list表
+2019-03-27 17:42:45,217-Sql_access-INFO:----->库已存在:(pymysql.err.ProgrammingError) (1007, "Can't create database 'new_sql'; database exists") [SQL: 'create database new_sql'] (Background on this error at: http://sqlalche.me/e/f405)
+2019-03-27 17:42:45,219-Sql_access-INFO:----->>创建user表
+2019-03-27 17:42:45,224-Sql_access-INFO:----->>创建Person表
+2019-03-27 17:42:45,233-Sql_access-INFO:---->> 创建Item list表
+2019-03-27 17:42:45,237-Sql_access-INFO:----->>创建公司列表

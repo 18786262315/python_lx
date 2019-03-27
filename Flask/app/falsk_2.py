@@ -3,9 +3,6 @@ import flask,json
 #!usr/bin/python
 # -*- coding : UTF-8 -*-
 import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
-
 import os
 from flask_cors import *
 from app import app
@@ -97,8 +94,35 @@ def register():
 
 @app.route('/test/<name>',methods=['get'])
 def test(name):
-    # print(request.headers)
-    # print(request.json)
+    print(
+'\n----->',request.method,
+'\n----->',request.args,
+'\n----->',request.form,
+'\n----->',request.values,
+
+
+'\n----->',request.cookies,
+
+
+'\n----->',request.headers,
+
+
+
+
+'\n----->',request.path,
+'\n----->',request.full_path,
+
+'\n----->',request.script_root,#?
+
+'\n----->',request.url,
+'\n----->',request.base_url,
+    
+'\n----->',request.url_root,
+'\n----->',request.host_url,
+'\n----->',request.host,
+'\n----->',request.files,
+
+)
     print(name)
     
     return json.dumps(name,ensure_ascii=False)
@@ -116,10 +140,10 @@ def first(url):  #视图必须有对应接收参数
 @app.route('/<path:url>',endpoint='name1')
 def first_1(url):
     print(url_for('name1',url="/flask_1")) #如果设置了url参数，url_for（别名,加参数）
-    return 'Hello World'
+    return 'Hello World111'
 
 def first_flask():
-    return 'Hello World' 
+    return 'Hello World1111' 
 
 app.add_url_rule(rule='/index/',endpoint='name2',view_func=first_flask,methods=['GET'])
 #app.add_url_rule(rule=访问的url,endpoint=路由别名,view_func=视图名称,methods=[允许访问的方法])

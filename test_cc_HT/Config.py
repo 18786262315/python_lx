@@ -1,7 +1,7 @@
 import os,sys
 # 加入模块环境变量配置
 proDir = os.path.split(os.path.realpath(__file__))[0]
-sys.path.append(proDir)
+# sys.path.append(proDir)
 import codecs
 import configparser
 from Common import Log

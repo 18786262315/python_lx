@@ -7,4 +7,4 @@ app = Flask(__name__)
 app.config.from_object('config')
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 db = SQLAlchemy(app)
-from app import files
+from app import files,falsk_2,views

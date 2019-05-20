@@ -5,11 +5,12 @@ import os
 import time
 url_list =[] #创建一个列表用于储存已抓取的链接
 lst2 = [] 
-url =  'https://m.baidu.com/sf/vsearch?pd=image_content&word=%E5%B7%B4%E9%BB%8E&tn=vsearch&atn=page'
-dyt = requests.get(url).status_code
+url =  'https://www.omega.im'
+dyt = requests.get(url)
+dyt
 print(dyt)
-r = 'href="(.*?)"'
-dyt_url = re.findall(r,dyt) #提取当前页面的路径
+r = 'href="(http:.*?|https:.*?)"'
+dyt_url = re.findall(r,dyt.text) #提取当前页面的路径
 print(dyt)
 url_list.extend(dyt_url)# 将当前提取到的路径放到列表内
 print(url_list)
@@ -33,9 +34,10 @@ while url_list: #循环列表
         else:   #不以http开头时，进行拼接
             d_url = url+d_url
             d_url = re.sub(r'[a-z](//)',r'/',d_url) #
+            print(d_url)
             t = requests.get(d_url).text #执行请求
             print('当前执行——————>'+d_url)
-        r = 'href="(.*?)"'
+        r = 'href="(http:.*?|https:.*?)"'
         a = re.findall(r,t) #获取请求页面内的所有链接
         if 'page' in d_url: #判断请求是否包含下一页
             url_list.extend(a) #添加到列表  

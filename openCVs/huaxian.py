@@ -8,13 +8,13 @@ from PIL import Image
 from aip import AipImageClassify
 
 # 请求参数
-urls = "http://192.168.0.145:9998/broke-manager-service/siteplan/updateSiteContent"
-userId = "15"
-token="db4faa45c8d74316bf85e557bcb07339",
-brokeId="ec40f23fb63640c680f1ff4789385016",
-sitePlanId="37d87bb6ddbc4430bb099792b5232be2",
+urls = "http://api.singmap.com/broke-manager-service/siteplan/updateSiteContent"
+userId = "8"
+token="1634e78d9dcf4b93958663177b78741d",
+brokeId="56d272c6dfbb421da06664083d0607d1",
+sitePlanId="3e987b4f77464105a82a977b28d70f38",
 
-img_pth = R'C:\Users\Administrator\Desktop\de1aca6685aa4e9b8bd2608e9e381a07.jpg'
+img_pth = R'C:\Users\Administrator\Desktop\db74dc1975154cdf9ec3c71620875573.jpg'
 
 	
 image = cv2.imread(img_pth, 1)
@@ -25,9 +25,12 @@ binary = cv2.adaptiveThreshold(
 rows, cols = binary.shape
 scale = 20
 # 识别横线
+
 kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (cols//scale, 1))
 eroded = cv2.erode(binary, kernel, iterations=1)
 dilatedcol = cv2.dilate(eroded, kernel, iterations=1)
+cv2.imshow("add Image",gray)
+cv2.waitKey(0)
 # 识别竖线
 scale = 10
 kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (1, rows//scale))
@@ -36,13 +39,13 @@ dilatedrow = cv2.dilate(eroded1, kernel, iterations=1)
 # 标识表格
 merge = cv2.add(dilatedcol, dilatedrow)
 cv2.imwrite(R'new_img.jpg', merge) # 将得到的表格图片储存
-# cv2.imshow("add Image",merge)
-# cv2.waitKey(0)
+cv2.imshow("add Image",merge)
+cv2.waitKey(0)
 
 #获取交点
 bitwiseAnd = cv2.bitwise_and(dilatedcol, dilatedrow)
-# cv2.imshow("add Image",bitwiseAnd)
-# cv2.waitKey(0)
+cv2.imshow("add Image",bitwiseAnd)
+cv2.waitKey(0)
 ys,xs = np.where(bitwiseAnd>0)
 ll = [ (xs[i],ys[i]) for i in range(len(ys))] #获取交点)
 
@@ -94,6 +97,8 @@ content = re.sub("\n", '', '%s' % content)  # 去除换行符
 # content = quote('%s' % content, 'utf-8')  # 转码
 payload = {"userId": userId,
            "token": token,
+
+		   
            "brokeId": brokeId,
            "sitePlanId": sitePlanId,
            "content": content

@@ -2,7 +2,7 @@
 import cv2
 import numpy as np
 
-img = cv2.imread("E:\\workspace\\cvimg\\1.png")
+img = cv2.imread("C:\\Users\\Administrator\\Desktop\\All_Buildings.jpg")
 #print img.shape
 
 def on_EVENT_LBUTTONDOWN(event, x, y, flags, param):

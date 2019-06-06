@@ -23,6 +23,10 @@ filemenu.add_command(label='保存',accelerator='Ctrl + S')
 filemenu.add_command(label='另存为',accelerator='Ctrl + Shift + S')
 menubar.add_cascade(label='文件',menu=filemenu)
 
+
+
+
+
 #编辑菜单
 editmenu=Menu(menubar)
 editmenu.add_command(label='撤销',accelerator='Ctrl + Z')

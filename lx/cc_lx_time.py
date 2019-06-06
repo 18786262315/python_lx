@@ -9,6 +9,8 @@ import time
 import datetime
 # 51test
 
+print(time.time()) # 获取当前时间戳
+
 print(datetime.datetime.now()+datetime.timedelta(hours=-3))
 print(time.strftime("%y-%m-%d %H:%M:%S", time.localtime()))
 

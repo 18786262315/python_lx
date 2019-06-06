@@ -13,14 +13,13 @@ class Ui_Dialog(object):
         Dialog.setObjectName("Dialog")
         Dialog.resize(1000, 395)
         self.pushButton = QtWidgets.QPushButton(Dialog)
-        self.pushButton.setGeometry(QtCore.QRect(20, 20, 75, 23))
+        self.pushButton.setGeometry(QtCore.QRect(10, 120, 75, 23))
         self.pushButton.setObjectName("pushButton")
         self.textEdit = QtWidgets.QTextEdit(Dialog)
         self.textEdit.setGeometry(QtCore.QRect(150, 30, 431, 271))
         self.textEdit.setObjectName("textEdit")
 
         self.retranslateUi(Dialog)
-        Dialog.rejected.connect(Dialog.lower)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):

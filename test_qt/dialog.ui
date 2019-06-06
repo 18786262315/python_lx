@@ -16,8 +16,8 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>20</y>
+     <x>10</x>
+     <y>120</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -45,22 +45,5 @@ p, li { white-space: pre-wrap; }
   </widget>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>Dialog</sender>
-   <signal>rejected()</signal>
-   <receiver>Dialog</receiver>
-   <slot>lower()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>499</x>
-     <y>197</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>499</x>
-     <y>197</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

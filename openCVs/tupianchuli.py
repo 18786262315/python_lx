@@ -4,7 +4,7 @@ import re
 import requests
 from urllib.parse import quote
 
-imgs = R'C:\Users\Administrator\Desktop\a5.jpg'
+imgs =  R"C:\Users\Administrator\Desktop\973715b109ce4a0e8eb53925468fc354.jpg"
 urls = "http://192.168.0.145:9998/broke-manager-service/siteplan/updateSiteContent"
 l = 98 #最大宽度
 n = 31#最大高度
@@ -15,25 +15,32 @@ width = image.shape[1]
 channels = image.shape[2]
 # print("height:%s,width:%s,channels:%s" % (height, width, channels))
 # print(image.size)
-
+def dil2ero(img,selem):
+    img=morphology.dilation(img,selem)
+    imgres=morphology.erosion(img,selem)
+    return imgres
 
 # 二值化
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-binary = cv2.adaptiveThreshold(~gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 35, -5)
+binary = cv2.adaptiveThreshold(~gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 21, -1)
 rows, cols = binary.shape
-scale = 40
+scale = 80
+
 # 识别横线
 kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (cols//scale, 1))
 eroded = cv2.erode(binary, kernel, iterations=1)
 dilatedcol = cv2.dilate(eroded, kernel, iterations=1)
-
+cv2.imshow("add Image",dilatedcol)
+cv2.waitKey(0)
 # #识别竖线
 kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (1, rows//scale))
 eroded = cv2.erode(binary, kernel, iterations=1)
 dilatedrow = cv2.dilate(eroded, kernel, iterations=1)
-# merge = cv2.add(dilatedcol,dilatedrow)
-# cv2.imshow("add Image",merge)
-# cv2.waitKey(0)
+cv2.imshow("add Image",dilatedrow)
+cv2.waitKey(0)
+merge = cv2.add(dilatedcol,dilatedrow)
+cv2.imshow("add Image",merge)
+cv2.waitKey(0)
 
 # 标识交点
 bitwiseAnd = cv2.bitwise_and(dilatedcol, dilatedrow)

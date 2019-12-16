@@ -100,13 +100,13 @@
 
 
 import bisect
- 
+
 def binarySearch3(lst,x):
     i = bisect.bisect_left(lst,x)
     if i != len(lst) and lst[i] == x:
         return i
     raise RuntimeError('testError')
- 
+
 if __name__ == '__main__':
     lst = sorted([2,5,2,7,3,6,7,9,34,44])
     print (binarySearch3(lst,13))
@@ -114,12 +114,12 @@ if __name__ == '__main__':
 
 # import bisect
 # import random
- 
+
 # random.seed(1)
- 
+
 # print('New  Pos Contents')
 # print('---  --- --------')
- 
+
 # l = []
 # for i in range(1, 15):
 #     r = random.randint(1, 100)

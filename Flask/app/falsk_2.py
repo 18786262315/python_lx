@@ -23,6 +23,7 @@ def falsk_1():
     'list3':{'name':'cc','yar':'5220','values':'888','imgs':r"F:\BaiduNetdiskDownload\422.jpg"}
     }}
     return json.dumps(res,ensure_ascii=False)
+     
 
 
 
@@ -75,7 +76,7 @@ def tester():
 
 
 @app.route('/ucode',methods=['post','get'])
-def code():
+def ucode():
     return 'ss'
 
 

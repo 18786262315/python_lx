@@ -10,17 +10,17 @@ import time
 
 for m in range(0,2):
 
-    url = 'http://image.baidu.com/search/acjson?tn=resultjson_com&ipn=rj&ct=201326592&is=&fp=result&queryWord=%E8%A1%A8%E6%83%85%E5%8C%85&cl=2&lm=-1&ie=utf-8&oe=utf-8&adpicid=&st=-1&z=&ic=0&word=%E8%A1%A8%E6%83%85%E5%8C%85&s=&se=&tab=&width=&height=&face=0&istype=2&qc=&nc=1&fr=&pn='+str(m*30)+'&rn=30&gsm=1e&1520500060263='
-
+    url = 'http://image.baidu.com/search/acjson?tn=resultjson_com&ipn=rj&ct=201326592&is=&fp=result&queryWord=%E6%84%9F%E6%83%85%E7%94%B7%E5%A5%B3%E5%9B%BE%E7%89%87&cl=2&lm=-1&ie=utf-8&oe=utf-8&adpicid=&st=&z=&ic=&hd=&latest=&copyright=&word=%E6%84%9F%E6%83%85%E7%94%B7%E5%A5%B3%E5%9B%BE%E7%89%87&s=&se=&tab=&width=&height=&face=&istype=&qc=&nc=1&fr=&expermode=&force=&pn=30&rn=30&gsm=&1571035573221='
     html = requests.get(url)
-    for n in range(30):
+    for n in range(len(html.json()['data'])-1):
         
         demo = html.json()['data'][n]['middleURL']
 
         ss = requests.get(demo).content
+
         print(demo[-20:])
 
-        with open('D:\\ycc\\pythonlianxi\\images\\'+demo[-20:-14]+'.jpg','wb') as f:
+        with open('E:\\ycc\\pythonlianxi\\images\\'+demo[-20:],'wb') as f:
 
             f.write(ss)
    

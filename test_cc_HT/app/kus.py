@@ -14,5 +14,5 @@ class Ku_Name:
             conn.close()
             log.info("----->>数据库不存在---->>创建库")
         except Exception as e:
-            log.info("----->>库已存在")
+            log.error("----->>库已存在")
             return e

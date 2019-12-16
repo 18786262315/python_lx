@@ -14,28 +14,49 @@ token="1634e78d9dcf4b93958663177b78741d",
 brokeId="56d272c6dfbb421da06664083d0607d1",
 sitePlanId="3e987b4f77464105a82a977b28d70f38",
 
-img_pth = R'C:\Users\Administrator\Desktop\db74dc1975154cdf9ec3c71620875573.jpg'
+img_pth = R"E:\新联国际\地产项目\自动画图\HUATU\IMGS\89701599c76c49e0b0d12dc8205066f2.jpg"
 
 	
-image = cv2.imread(img_pth, 1)
+image=cv2.imdecode(np.fromfile(img_pth,dtype=np.uint8),-1) # 中文路径问题解决
+
 # 二值化
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
 binary = cv2.adaptiveThreshold(
-    ~gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, -1)
+    ~gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 3,-1)
 rows, cols = binary.shape
-scale = 20
+scale = 80
+
+# 膨胀腐化
+kernel = np.ones((2, 2), np.uint8)
+# binary = cv2.dilate(binary, kernel) 
+binary = cv2.morphologyEx(binary, cv2.MORPH_CLOSE, kernel) 
 # 识别横线
+
+
+
 
 kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (cols//scale, 1))
 eroded = cv2.erode(binary, kernel, iterations=1)
 dilatedcol = cv2.dilate(eroded, kernel, iterations=1)
-cv2.imshow("add Image",gray)
+cv2.imshow("add Image",dilatedcol)
 cv2.waitKey(0)
+contours, hierarchy = cv2.findContours(
+	dilatedcol, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
+cv2.drawContours(image,contours,-1,(0,0,255),2)
+cv2.imshow("add Image", image)
+cv2.waitKey(0)
+
 # 识别竖线
-scale = 10
+# scale = 10
 kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (1, rows//scale))
 eroded1 = cv2.erode(binary, kernel, iterations=1)
 dilatedrow = cv2.dilate(eroded1, kernel, iterations=1)
+cv2.imshow("add Image",dilatedrow)
+cv2.waitKey(0)
+
+
 # 标识表格
 merge = cv2.add(dilatedcol, dilatedrow)
 cv2.imwrite(R'new_img.jpg', merge) # 将得到的表格图片储存
@@ -51,13 +72,20 @@ ll = [ (xs[i],ys[i]) for i in range(len(ys))] #获取交点)
 
 # 二次处理
 image1 = cv2.imread(R'new_img.jpg', 1)
+cv2.imshow("add Image", image1)
+cv2.waitKey(0)
 gray = cv2.cvtColor(image1, cv2.COLOR_BGR2GRAY)
-binary = cv2.adaptiveThreshold( ~gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2)
+binary = cv2.adaptiveThreshold( ~gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 3, -1)
 ret, binary = cv2.threshold(gray, 100, 255, cv2.THRESH_BINARY)
 #  findContours 获取轮廓
+
 contours, hierarchy = cv2.findContours(
     binary, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
+cv2.drawContours(image1,contours,-1,(0,0,255),2)
+
+cv2.imshow("add Image", image1)
+cv2.waitKey(0)
 content = []
 name = 0
 mean_size = np.mean([cv2.contourArea(i)for i in contours]) #获取平均面积
@@ -70,7 +98,7 @@ for i, contour in enumerate(contours):
 			
 			f = 1
 			break
-	if f !=0 and 1 < size < mean_size:
+	if f !=0 and 10 < size < mean_size:
 
 		x, y, w, h = cv2.boundingRect(contour)
 		cv2.rectangle(image, (x, y), (x + w, y + h), (146, 43, 33), 1)
@@ -91,18 +119,18 @@ for i, contour in enumerate(contours):
 		pass
 		# print(y,y+w,x,x+w-w)
 
-# 推送到服务器
-content = re.sub("'", '"', '%s' % content)  # 将单引号换成双引号
-content = re.sub("\n", '', '%s' % content)  # 去除换行符
-# content = quote('%s' % content, 'utf-8')  # 转码
-payload = {"userId": userId,
-           "token": token,
+# # 推送到服务器
+# content = re.sub("'", '"', '%s' % content)  # 将单引号换成双引号
+# content = re.sub("\n", '', '%s' % content)  # 去除换行符
+# # content = quote('%s' % content, 'utf-8')  # 转码
+# payload = {"userId": userId,
+#            "token": token,
 
 		   
-           "brokeId": brokeId,
-           "sitePlanId": sitePlanId,
-           "content": content
-           }
-headers = {"Content-Type": "application/x-www-form-urlencoded"}
-ret = requests.post(urls, data=payload)
-print(ret.text)
+#            "brokeId": brokeId,
+#            "sitePlanId": sitePlanId,
+#            "content": content
+#            }
+# headers = {"Content-Type": "application/x-www-form-urlencoded"}
+# ret = requests.post(urls, data=payload)
+# print(ret.text)

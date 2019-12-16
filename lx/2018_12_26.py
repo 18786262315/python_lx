@@ -1,1 +1,12 @@
-[{"width":"50","height":"16","left":"76","top":"83","name":"Rect0","fill":"rgba(220,20,60,0.4)","type":"rect"},\n{"width":"50","height":"16","left":"459","top":"83","name":"Rect1","fill":"rgba(220,20,60,0.4)","type":"rect"},\n{"width":"50","height":"16","left":"847","top":"82","name":"Rect2","fill":"rgba(220,20,60,0.4)","type":"rect"},\n{"width":"50","height":"16","left":"73","top":"431","name":"Rect3","fill":"rgba(220,20,60,0.4)","type":"rect"},\n{"width":"50","height":"16","left":"459","top":"431","name":"Rect4","fill":"rgba(220,20,60,0.4)","type":"rect"},\n{"width":"50","height":"16","left":"845","top":"430","name":"Rect5","fill":"rgba(220,20,60,0.4)","type":"rect"},\n{"width":"50","height":"16","left":"73","top":"759","name":"Rect6","fill":"rgba(220,20,60,0.4)","type":"rect"},\n{"width":"50","height":"16","left":"462","top":"758","name":"Rect7","fill":"rgba(220,20,60,0.4)","type":"rect"},\n{"width":"50","height":"16","left":"846","top":"757","name":"Rect8","fill":"rgba(220,20,60,0.4)","type":"rect"},\n{"width":"49","height":"16","left":"1238","top":"82","name":"Rect748","fill":"rgba(220,20,60,0.4)","type":"rect"},\n{"width":"49","height":"16","left":"1235","top":"430","name":"Rect749","fill":"rgba(220,20,60,0.4)","type":"rect"},\n{"width":"49","height":"16","left":"1237","top":"760","name":"Rect750","fill":"rgba(220,20,60,0.4)","type":"rect"}]
+import requests
+
+
+
+with open('baidu_tieba.png', 'ab') as f:
+    r = requests.get('http://img.singmap.com/upload/broke/0c5d80359cc5416a9ea953fdebcbfc20/3d6835636d994508a27523d702a3e532/siteplanImg/8f5853da041240029196f6ef0dba2b55.jpg')
+    f.write(r.content)
+    f.close()
+
+
+
+

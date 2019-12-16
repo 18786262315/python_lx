@@ -1,0 +1,33 @@
+[
+    {
+        "width": "194",
+        "height": "40",
+        "left": "142",
+        "top": "415",
+        "name": "Rect48",
+        "fill": "rgba(220,20,60,0.4)",
+        "type": "rect"
+    },
+    {
+        "width": "94",
+        "height": "25",
+        "left": "143",
+        "top": "457",
+        "name": "Rect49",
+        "fill": "rgba(220,20,60,0.4)",
+        "type": "rect"
+    },
+    {
+        "width": "86",
+        "height": "25",
+        "left": "339",
+        "top": "457",
+        "name": "Rect50",
+        "fill": "rgba(220,20,60,0.4)",
+        "type": "rect"
+    }
+]
+
+
+1,22,22
+4,2,6

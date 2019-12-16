@@ -158,7 +158,7 @@ def init_db():
     Base.metadata.create_all()
 
 
-def drop_db():
+def drop_db(engine):
     """
     根据类删除数据库表
     :return:

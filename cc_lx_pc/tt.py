@@ -1,7 +1,7 @@
 
 import requests
 import os
-
+from urllib.parse import quote
 
 
 def getManyPages(keyword,pages):
@@ -83,5 +83,5 @@ def getImg(dataList, localPath):
             continue
 
 if __name__ == '__main__':
-    dataList = getManyPages('太空',20)  # 参数1:关键字，参数2:要下载的页数
-    getImg(dataList,"C:\\Users\\Administrator\\Desktop\\bl\\") # 参数2:指定保存的路径
+    dataList = getManyPages("男女",20)  # 参数1:关键字，参数2:要下载的页数
+    getImg(dataList,"E:\\ycc\\pythonlianxi\\images\\") # 参数2:指定保存的路径

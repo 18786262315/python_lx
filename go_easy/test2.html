@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>GoEasy Test</title>
+
+<script type="text/javascript" src="https://cdn.goeasy.io/goeasy.js"></script>
+<script type="text/javascript">
+    if(typeof GoEasy !== 'undefined'){
+        var goEasy = new GoEasy({
+            appkey: 'BS-fb5cc4d003a2434ea5c217e5ec93cedd',
+            userId:"222",
+            username:"22",
+            onConnected:function(){
+                console.log("Connect to GoEasy success.");
+            } ,
+            onDisconnected:function(){
+                console.log("Disconnect to GoEasy server.");
+            } ,
+            onConnectFailed:function(error){
+                console.log("Connect to GoEasy failed, error code: "+ error.code+" Error message: "+ error.content);
+            }
+        });
+    }
+            
+    subscribe();
+    function subscribe(){
+             goEasy.subscribe({
+                channel: 'notification',
+                onMessage: function(message){
+                    console.log('Meessage received:'+message.content);
+                },
+                onSuccess:function(){
+
+                    console.log("Subscribe the Channel successfully.");
+
+                },
+
+                onFailed: function(error){
+
+                    console.log("Subscribe the Channel failed, error code: "+ error.code + " error message: "+ error.content);
+
+                }
+
+            });
+
+    }
+            
+     function publishMessage(){
+          goEasy.publish({
+                channel: 'notification1',
+                message: 'You received a new notification',
+                onSuccess:function(){
+
+                    console.log("Publish message success.");
+
+                },
+                onFailed: function(error){
+
+                    console.log("Publish message failed, error code: "+ error.code +" Error message: "+ error.content);
+
+                }
+            });
+     
+     }
+                  
+     function unsubscribe(){
+                goEasy.unsubscribe({
+                    channel:"notification",
+                    onSuccess: function(){
+
+                        console.log("Cancel Subscription successfully.");
+
+                    },
+                    onFailed: function(error){
+
+                        console.log("Cancel the subscrition failed, error code: "+ error.code + "error message: "+ error.content);
+                    }
+
+                });
+            }
+        
+ </script>
+
+
+</head>
+<body>
+  <input type="button" value="publish" onclick="publishMessage()"/>
+  <input type="button" value="unsubscribe" onclick="unsubscribe()"/>
+  <input type="button" value="subscribe" onclick="subscribe()"/>
+</body>
+</html>

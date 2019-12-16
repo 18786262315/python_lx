@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+    <title>Get started with the Map Matching API</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <!-- Import Mapbox GL JS  -->
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css' rel='stylesheet' />
+    <!-- Import jQuery -->
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.9/mapbox-gl-draw.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.9/mapbox-gl-draw.css'
+        type='text/css' />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .info-box {
+            position: absolute;
+            margin: 20px;
+            width: 25%;
+            top: 0;
+            bottom: 40%;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            overflow-y: scroll;
+            font-family: sans-serif;
+            font-size: 0.8em;
+            line-height: 2em;
+        }
+
+        #info {
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Create a container for the map -->
+    <div id='map'></div>
+    <div class="info-box">
+        <div id="info">
+            <p>Draw your route using the draw tools on the right. To get the most accurate route match, draw points at
+                regular intervals.</p>
+        </div>
+        <div id="directions"></div>
+    </div>
+    <script>
+        // Add your Mapbox access token
+        mapboxgl.accessToken = 'pk.eyJ1IjoieWNjYyIsImEiOiJjazBxMjUwcGswNDJjM2ptb21vZnJydHNuIn0.QLk6o9wPGTKxJJdtev9zsg';
+        var map = new mapboxgl.Map({
+            container: 'map', // Specify the container ID
+            style: 'mapbox://styles/mapbox/streets-v11', // Specify which map style to use
+            center: [-122.42136449, 37.80176523], // Specify the starting position
+            zoom: 14.5, // Specify the starting zoom
+        });
+
+        var draw = new MapboxDraw({
+            // Instead of showing all the draw tools, show only the line string and delete tools
+            displayControlsDefault: false,
+            controls: {
+                line_string: true,
+                trash: true
+            },
+            styles: [
+                // Set the line style for the user-input coordinates
+                {
+                    "id": "gl-draw-line",
+                    "type": "line",
+                    "filter": ["all", ["==", "$type", "LineString"],
+                        ["!=", "mode", "static"]
+                    ],
+                    "layout": {
+                        "line-cap": "round",
+                        "line-join": "round"
+                    },
+                    "paint": {
+                        "line-color": "#438EE4",
+                        "line-dasharray": [0.2, 2],
+                        "line-width": 4,
+                        "line-opacity": 0.7
+                    }
+                },
+                // Style the vertex point halos
+                {
+                    "id": "gl-draw-polygon-and-line-vertex-halo-active",
+                    "type": "circle",
+                    "filter": ["all", ["==", "meta", "vertex"],
+                        ["==", "$type", "Point"],
+                        ["!=", "mode", "static"]
+                    ],
+                    "paint": {
+                        "circle-radius": 12,
+                        "circle-color": "#FFF"
+                    }
+                },
+                // Style the vertex points
+                {
+                    "id": "gl-draw-polygon-and-line-vertex-active",
+                    "type": "circle",
+                    "filter": ["all", ["==", "meta", "vertex"],
+                        ["==", "$type", "Point"],
+                        ["!=", "mode", "static"]
+                    ],
+                    "paint": {
+                        "circle-radius": 8,
+                        "circle-color": "#438EE4",
+                    }
+                },
+            ]
+        });
+
+        // Add the draw tool to the map
+        map.addControl(draw);
+    </script>
+</body>
+
+</html>

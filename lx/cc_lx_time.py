@@ -9,24 +9,31 @@ import time
 import datetime
 # 51test
 
+
+
+s= ['20', '22', '07', '15', '14', '01', '18', '08', '10', '16', '12', '04', '03', '11', '00', '17', '21', '05', '23', '13', '19', '09', '06', '02']
+s.sort()
+
+print(s)
+
 print(time.time()) # 获取当前时间戳
 
 print(datetime.datetime.now()+datetime.timedelta(hours=-3))
 print(time.strftime("%y-%m-%d %H:%M:%S", time.localtime()))
 
-print(time.localtime) 
+print('----',time.localtime()) 
 # time.sleep(2)
 # print(time.clock()) 
 # time.gmtime() # 转换当前时间，将当前时间转换为元组，以标准时区转换
 print(time.gmtime(9000)) #将时间戳转换为元组形式 ,转换后的时间是，utc时间
 print(time.localtime())#将当前时间转换成元组 ,本地时区。 
 x = time.localtime()
-# bin(x)
-print(time.mktime(x)) #将元组形式的时间转换为时间戳
+print(x)
+print('+-+-',time.mktime(x)) #将元组形式的时间转换为时间戳
 time.strftime("%Y-%m-%d %H:%M:%S",x) #将元组格式的时间转换为格式化时间字符串表示。
 s = time.strptime("2018-06-04 12:30:24","%Y-%m-%d %H:%M:%S")# %Y %m %d %H %M %S 时间表示格式
 print(s)
-print()
+print('111111')
 print()
 print()
 print()
@@ -74,8 +81,10 @@ print ("本地时间为 :", localtime)
 # print (time.strftime("%a %b %d %H:%M:%S %Y", time.localtime()))
   
 # # 将格式字符串转换为时间戳
-# a = "Sat Mar 28 22:24:24 2016"
-# print (time.mktime(time.strptime(a,"%a %b %d %H:%M:%S %Y")))
+a = "2019-11-29 15:30:21"
+b = time.strptime(a,"%Y-%m-%d %H:%M:%S")
+print(b)
+print(time.strftime(" %H ",time.strptime(a,"%Y-%m-%d %H:%M:%S")))
 
 # #time.altzone返回格林威治西部的夏令时地区的偏移秒数。如果该地区在格林威治东部会返回负值（如西欧，包括英国）。对夏令时启用地区才能使用。
 # print ("time.altzone %d " % time.altzone)

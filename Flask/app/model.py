@@ -24,29 +24,3 @@ class user(db.Model):
     def __repr__(self):
         return self.name
 
-
-# class User(Model):
-#     __tablename__ = "user"
-#     id = Column(Integer,primary_key=True)
-#     username = Column(String(20))
-#     userpassword = Column(String(40))
-#     phone = Column(String(20))
-#     poto = Column(String(20)) #用户头像
-#     createtime = Column(DateTime)
-#     sex = Column(Enum('1','2','3','4'))
-
-
-# class Person(Model):
-#     __tablename__ = "person"
-#     id = Column(Integer , primary_key=True , autoincrement=True)
-#     age = Column(Integer)
-#     name = Column(String(20))
-#     price1 = Column(Float)
-#     price2 = Column(DECIMAL(7,3))
-#     delete = Column(Boolean)
-#     sex = Column(Enum("男","女"))
-#     create_time1 = Column(Date)
-#     create_time2 = Column(DateTime)
-#     create_time3 = Column(Time)
-#     content = Column(Text)
-#     contents = Column(LONGTEXT)

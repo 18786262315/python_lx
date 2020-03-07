@@ -8,6 +8,7 @@ class Ku_Name():
             conn = engine.connect()
             conn.execute("create database %s"%ku_name)
             conn.close()
+            print('===========>>创建库')
         except Exception as e:
-            
+            print(e)
             return e

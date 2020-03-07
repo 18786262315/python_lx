@@ -30,7 +30,7 @@ def index():
     </html>
     '''
 
-@app.route('/logins',methods=['POST','get'])
+@app.route('/loginss',methods=['POST','get'])
 def teste():
     nm ='cc'
     pd = '123456'

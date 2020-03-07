@@ -14,18 +14,19 @@ token="1634e78d9dcf4b93958663177b78741d",
 brokeId="56d272c6dfbb421da06664083d0607d1",
 sitePlanId="3e987b4f77464105a82a977b28d70f38",
 
-img_pth = R"E:\新联国际\地产项目\自动画图\HUATU\IMGS\89701599c76c49e0b0d12dc8205066f2.jpg"
+img_pth = R"E:\新联国际\地产项目\自动画图\HUATU\IMGS\ea96e1f62fa34f8da110e58daf8bfc2d.jpg"
 
 	
 image=cv2.imdecode(np.fromfile(img_pth,dtype=np.uint8),-1) # 中文路径问题解决
 
 # 二值化
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-
+# cv2.imshow("add Image",dilatedcol)
+# cv2.waitKey(0)
 binary = cv2.adaptiveThreshold(
-    ~gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 3,-1)
+    ~gray, 140, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 5,-1)
 rows, cols = binary.shape
-scale = 80
+scale = 200
 
 # 膨胀腐化
 kernel = np.ones((2, 2), np.uint8)
@@ -49,7 +50,7 @@ cv2.imshow("add Image", image)
 cv2.waitKey(0)
 
 # 识别竖线
-# scale = 10
+# scale = 300
 kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (1, rows//scale))
 eroded1 = cv2.erode(binary, kernel, iterations=1)
 dilatedrow = cv2.dilate(eroded1, kernel, iterations=1)

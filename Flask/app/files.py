@@ -65,4 +65,4 @@ def downloader(filename):
     return send_from_directory(dirpath, filename, as_attachment=True)  # as_attachment=True 一定要写，不然会变成打开，而不是下载
 
 
-app.run(debug = True,port=7777,host='0.0.0.0')
+# app.run(debug = True,port=7777,host='0.0.0.0')

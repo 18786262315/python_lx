@@ -1,11 +1,11 @@
 from test_sql import *
-
+from test_sql import User
 
 Session = sessionmaker(bind=engine)
 session = Session()
 
-
-
+user_all = User.query.all()
+print(user_all)
 # session.add(User(username='cc',userpassword='123456',phone='12345678901',poto='a.jpg',createtime='2019-12-23 12:22:32',sex='4'))
 # session.commit()
 
@@ -64,7 +64,7 @@ session.query(User).filter(User.id == 5).update({User.username:'tset_ccc',User.p
 
 # 查询
 ret=session.query(User,Person).filter(User.id == Person.id).filter(Person.id == 1).all() #直接打印整个列表数据，以对象的形式返回
-# ret=session.query(User).all() #直接打印整个列表数据，以列表的形式返回
+# ret=session.query(Users).all() #直接打印整个列表数据，以列表的形式返回
 # ret=session.query(User.id,User.phone,User.username) # 打印指定列数据以元组的方式返回
 
 # ret=session.query(User).order_by(User.username,-User.id) # 排序,可以单个排序也可以多个排序，加’-‘是表示倒序
